@@ -10,7 +10,7 @@
 .product_list {
   padding-top: 80px;
   padding-left: 0;
-  outline: 4px solid green;
+  // outline: 4px solid green;
 
   @include media-size(min-tablet) {
     display: flex;

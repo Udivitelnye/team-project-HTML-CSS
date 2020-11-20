@@ -97,6 +97,7 @@
   @include media-size(desktop-1) {
     .menu-block.is-close & {
       transform: translateX(100%);
+      pointer-events: none;
       @include visuallyHidden;
     }
 
@@ -167,7 +168,6 @@
   padding-bottom: 5px;
   border: none;
   background-color: transparent;
-  outline: none;
   cursor: pointer;
 
   @include media-size(min-desktop) {
@@ -193,7 +193,8 @@
   stroke: $accentColor;
   @include transitionTwoProp(stroke, stroke-width);
 
-  .menu-button:hover & {
+  .menu-button:hover &,
+  .menu-button:focus & {
     stroke: $primaryColor;
     stroke-width: 2;
   }

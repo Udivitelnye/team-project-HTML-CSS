@@ -9,10 +9,11 @@
 // item
 .footer .item {
   @include media-size(min-tablet) {
-    width: 50%;
+    @include itemWidth(2, 20px);
   }
 
   @include media-size(min-desktop) {
+    @include itemWidth(2);
     text-align: center;
   }
 }
@@ -21,7 +22,7 @@
   text-align: end;
 
   @include media-size(tablet-1) {
-    margin-bottom: 98px;
+    margin-bottom: 43px;
   }
 }
 
@@ -29,6 +30,7 @@
 .footer .item__wrapper {
   @include media-size(min-tablet) {
     display: flex;
+    justify-content: space-between;
     margin-bottom: 91px;
   }
 
@@ -129,7 +131,6 @@
 }
 
 .footer .social-networks-list__icon {
-  display: inline-block;
   width: 20px;
   height: 20px;
 
@@ -169,9 +170,6 @@
 
 // line
 .footer .line {
-  position: absolute;
-  left: 0;
-  width: 100%;
   border-top: 1px solid #e1e1e1;
 }
 
