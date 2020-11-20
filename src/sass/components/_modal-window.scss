@@ -1,0 +1,227 @@
+/* модальне вікно */
+.backdrop {
+  position: fixed;
+  z-index: 901;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.2);
+  overflow-y: scroll;
+  padding-top: 15px;
+  padding-left: 15px;
+  padding-right: 15px;
+  padding-bottom: 93px;
+
+  opacity: 1;
+  @include transition(opacity);
+
+  @include media-size(min-desktop) {
+    display: flex;
+    padding-top: 93px;
+    justify-content: center;
+    align-items: center;
+  }
+}
+
+.backdrop.is-hidden {
+  pointer-events: none;
+  opacity: 0;
+  @include transition(opacity, 250ms);
+
+  .modal {
+    transform: scale(0);
+  }
+}
+
+.modal {
+  position: relative;
+  max-width: 460px; /*не 450 бо не влазить стрічка з чекбоксом*/
+  padding: 40px;
+  margin: 0 auto;
+
+  border-radius: 4px;
+  background-color: getColor('primary-white');
+  box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.12), 0px 1px 1px rgba(0, 0, 0, 0.14),
+    0px 2px 1px rgba(0, 0, 0, 0.2);
+
+  transform: scale(1);
+  @include transition(transform, 250ms);
+
+  & .section-title {
+    margin-bottom: 12px;
+    font-size: 20px;
+    line-height: 1.5;
+  }
+
+  @include media-size(min-desktop) {
+    max-width: 528px;
+    @include transition(transform, 250ms);
+
+    & .section-title {
+      line-height: 1.15;
+    }
+  }
+}
+
+.form-field {
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  margin-bottom: 10px;
+}
+
+.form__input-wrapper {
+  position: relative;
+  width: 100%;
+}
+
+.form-text {
+  margin-bottom: 4px;
+
+  font-size: 12px;
+  line-height: 1.17;
+  letter-spacing: 0.01em;
+}
+
+.form-input {
+  width: 100%;
+  padding-top: 11px;
+  padding-bottom: 11px;
+  padding-left: 42px;
+  padding-right: 12px;
+  border: 1px solid rgba(33, 33, 33, 0.2);
+  border-radius: 4px;
+  @include transition(border);
+
+  &:focus {
+    outline-color: getColor('accent');
+  }
+
+  &:hover {
+    border-color: getColor('accent');
+  }
+}
+
+.form-icon {
+  position: absolute;
+  bottom: 50%;
+  left: 21px;
+
+  width: 18px;
+  height: 18px;
+
+  fill: getColor('title-text');
+  transform: translate(-50%, 50%);
+  @include transition(fill);
+
+  .form-input:focus + &,
+  .form-input:hover + & {
+    fill: getColor('accent');
+  }
+}
+
+.form-textarea {
+  width: 100%;
+  padding-top: 12px;
+  padding-bottom: 12px;
+  padding-left: 16px;
+  padding-right: 16px;
+  resize: none;
+
+  border: 1px solid rgba(33, 33, 33, 0.2);
+  border-radius: 4px;
+  @include transition(border);
+
+  &:focus {
+    outline-color: getColor('accent');
+  }
+
+  &:hover {
+    border: 1px solid getColor('accent');
+  }
+
+  &::placeholder {
+    font-size: 12px;
+    line-height: 14px;
+    letter-spacing: 0.01em;
+    color: rgba(117, 117, 117, 0.5);
+  }
+}
+
+.form-checkbox {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 10px;
+}
+
+.checkbox-icon {
+  min-width: 16px;
+  width: 16px;
+  height: 15px;
+  margin-right: 8px;
+
+  fill: getColor('primary-white');
+  border-radius: 2px;
+  border: 2px solid getColor('title-text');
+  @include transitionTwoProp(border, background-color);
+
+  .form-checkbox:hover & {
+    border: 2px solid getColor('accent');
+  }
+
+  // .form-checkbox__input:checked + & {
+  //   border: 0px solid getColor("accent");
+  //   background: getColor("accent");
+  // }
+
+  .form-checkbox__input:checked + &,
+  &.checked {
+    border: 0px solid getColor('accent');
+    background: getColor('accent');
+  }
+}
+
+.form__text-checkbox {
+  font-size: 12px;
+  line-height: 1.17;
+
+  @include media-size(min-desktop) {
+    font-size: 14px;
+    line-height: 1.71;
+  }
+}
+
+.checkbox__text-link {
+  color: getColor('accent');
+}
+
+/* кнопка Х - закрити модальне вікно */
+.modal__close-btn {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  top: 8px;
+  right: 8px;
+  width: 30px;
+  height: 30px;
+  padding: 0;
+
+  border-radius: 50%;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  background-color: getColor('primary-white');
+}
+
+.modal__close-x {
+  width: 12px;
+  height: 12px;
+
+  @include transition(fill);
+
+  .modal__close-btn:hover &,
+  .modal__close-btn:focus & {
+    fill: getColor('accent');
+  }
+}
