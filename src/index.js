@@ -4,21 +4,23 @@ import "./sass/main.scss";
   const menuBtnRef = document.querySelector("[data-menu-button]");
   const menuBlockRef = document.querySelector("[data-menu-block]");
   const headerRef = document.querySelector("[data-header]");
-  const bodyRef = document.querySelector("body");
+const bodyRef = document.querySelector("body");
+const windowHeight = window.innerHeight;
 
-  menuBtnRef.addEventListener("click", () => {
+menuBtnRef.addEventListener("click", () => {
+    const { height: menuBlockHeight } = menuBlockRef.getBoundingClientRect();
+    menuBlockHeight == windowHeight ? menuBlockRef.removeAttribute('style') : menuBlockRef.style.height=`${windowHeight}px`;
+
     const expanded =
       menuBtnRef.getAttribute("aria-expanded") === "true" || false;
     menuBtnRef.setAttribute("aria-expanded", !expanded);
 
     menuBtnRef.classList.toggle("is-open");
-      menuBlockRef.classList.toggle("is-open");
-      menuBlockRef.classList.toggle("is-close");
-    // menuBlockRef.classList.toggle("container");
-    //   headerRef.classList.toggle("is-open");
-      bodyRef.classList.toggle("mobile-menu-open");
-      headerRef.classList.toggle("mobile-menu-open");
-      headerRef.classList.toggle("mobile-menu-close");
+    menuBlockRef.classList.toggle("is-open");
+    menuBlockRef.classList.toggle("is-close");
+    bodyRef.classList.toggle("mobile-menu-open");
+    headerRef.classList.toggle("mobile-menu-open");
+    headerRef.classList.toggle("mobile-menu-close");
   });
 /* =========================================== */
 

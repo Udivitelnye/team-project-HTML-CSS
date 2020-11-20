@@ -29,37 +29,33 @@
 }
 
 .tradition {
+  @include mobile-end-s {
+    background-image: url(/img/tradition/bg-320-@1x.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: 0px 766px;
+  }
 
-       @include mobile-end-s {
-         background-image: url(/img/tradition/bg-320-@1x.png);
-         background-size: contain;
-         background-repeat: no-repeat;
-         background-position: 0px 766px;
-       }
-
-       @include desktop-s {
-         background-image: url(/img/tradition/bg-1282-@1x.png);
-         background-size: contain;
-         background-repeat: no-repeat;
-         background-position: 0px 342px;
-       }
-      }
-
-
+  @include desktop-s {
+    background-image: url(/img/tradition/bg-1282-@1x.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: 0px 342px;
+  }
+}
 
 @media screen and (min-device-pixel-ratio: 2),
-screen and (min-resolution: 192dpi),
-screen and (min-resolution: 2dppx) { 
+  screen and (min-resolution: 192dpi),
+  screen and (min-resolution: 2dppx) {
   .tradition {
-  
-     @include mobile-end-s {
-        background-image: url(/img/tradition/bg-320-@2x.png);
-        background-size: contain;
-        background-repeat: no-repeat;
-        background-position: 0px 766px;
-      }
+    @include mobile-end-s {
+      background-image: url(/img/tradition/bg-320-@2x.png);
+      background-size: contain;
+      background-repeat: no-repeat;
+      background-position: 0px 766px;
+    }
 
-     @include desktop-s {
+    @include desktop-s {
       background-image: url(/img/tradition/bg-1282-@2x.png);
       background-size: contain;
       background-repeat: no-repeat;
@@ -67,7 +63,6 @@ screen and (min-resolution: 2dppx) {
     }
   }
 }
-
 
 .tradition__photo {
   margin: 0;
@@ -126,7 +121,6 @@ screen and (min-resolution: 2dppx) {
   }
 }
 
-
 .tradition__photo {
   @include mobile-end-s {
     margin-bottom: 46px;
@@ -149,9 +143,8 @@ screen and (min-resolution: 2dppx) {
   }
 
   @include tablet-s {
-   padding: 0px;
-   padding-top: 50px;
-
+    padding: 0px;
+    padding-top: 50px;
   }
 
   @include desktop-s {
@@ -162,16 +155,16 @@ screen and (min-resolution: 2dppx) {
 
 .tradition__text {
   @include mobile-s {
-  margin-bottom: 25px;
-  }
-  
-  @include tablet-s {
-  margin-bottom: 27px;
+    margin-bottom: 25px;
   }
 
- @include desktop-s { 
-  margin-bottom: 35px;
- }
+  @include tablet-s {
+    margin-bottom: 27px;
+  }
+
+  @include desktop-s {
+    margin-bottom: 35px;
+  }
 }
 
 .tradition__desc {
@@ -271,7 +264,6 @@ screen and (min-resolution: 2dppx) {
     margin-bottom: 14px;
   }
 }
-
 
 /*-----------------------FONTS--------------------------*/
 
