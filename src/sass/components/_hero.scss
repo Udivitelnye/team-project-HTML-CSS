@@ -113,6 +113,9 @@
   font-size: 48px;
   line-height: 0.95;
   color: $titleColor;
+  grid-column: 1;
+  grid-row: 1;
+  animation: glow 2s ease-in-out infinite alternate;
 
   @include media-size(min-tablet) {
     font-size: 34px;
@@ -121,6 +124,16 @@
 
   @include media-size(min-desktop) {
     font-size: 58px;
+  }
+
+  @keyframes glow {
+    from {
+      text-shadow: 0 0 20px pink;
+    }
+    to {
+      text-shadow: 0 0 30px rgba(255, 0, 130, 0.5),
+        0 0 10px rgba(255, 0, 130, 0.5);
+    }
   }
 }
 
