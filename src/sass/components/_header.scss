@@ -97,6 +97,7 @@
     .menu-block.is-close & {
       transform: translateX(100%);
       pointer-events: none;
+      visibility: hidden;
       @include visuallyHidden;
     }
 
@@ -171,6 +172,7 @@
 
   @include media-size(min-desktop) {
     @include visuallyHidden;
+    visibility: hidden;
   }
 
   .icon-close {
