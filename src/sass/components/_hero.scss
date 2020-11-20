@@ -2,7 +2,7 @@
   background-repeat: no-repeat;
   background-color: #ffb8ca;
 
-  @media screen and(max-width: 767px) {
+  @include media-size(tablet-1) {
     background-image: url(../img/hero/icecream171@1x.png),
       url(../img/hero/elipse.svg);
     background-position: bottom 0 right 33%, bottom 75px right 33%;
@@ -20,7 +20,7 @@
 .container-hero {
   background-repeat: no-repeat;
 
-  @media screen and(min-width: 768px) {
+  @include media-size(min-tablet) {
     background-image: url(../img/hero/icecream143@1x.png),
       url(../img/hero/tasty168@1x.png), url(../img/hero/milk124@1x.png),
       url(../img/hero/elipse.svg);
@@ -37,7 +37,7 @@
     }
   }
 
-  @media screen and(min-width: 1200px) {
+  @include media-size(min-desktop) {
     background-image: url(../img/hero/icecream236@1x.png),
       url(../img/hero/tasty293@1x.png), url(../img/hero/milk188@1x.png),
       url(../img/hero/elipse.svg);
@@ -59,30 +59,30 @@
   display: flex;
   justify-content: space-between;
 
-  @media screen and(max-width: 767px) {
+  @include media-size(tablet-1) {
     padding-top: 193px;
     padding-bottom: 160px;
   }
 
-  @media screen and(min-width: 768px) {
+  @include media-size(min-tablet) {
     padding-top: 102px;
     margin-bottom: 66px;
   }
 
-  @media screen and(min-width: 1200px) {
-    margin-bottom: 112px;
+  @include media-size(min-desktop) {
     padding-top: 171px;
+    margin-bottom: 112px;
   }
 }
 
 .hero-main {
   max-width: 218px;
 
-  @media screen and(min-width: 768px) {
+  @include media-size(min-tablet) {
     max-width: 170px;
   }
 
-  @media screen and(min-width: 1200px) {
+  @include media-size(min-desktop) {
     max-width: 277px;
   }
 }
@@ -98,12 +98,12 @@
   text-transform: uppercase;
   color: $primaryColor;
 
-  @media screen and(min-width:768px) {
+  @include media-size(min-tablet) {
     font-size: 22px;
     line-height: 1.13;
   }
 
-  @media screen and(min-width: 1200px) {
+  @include media-size(min-desktop) {
     margin-bottom: 25px;
     font-size: 38px;
   }
@@ -114,11 +114,12 @@
   line-height: 0.95;
   color: $titleColor;
 
-  @media screen and(min-width:768px) {
+  @include media-size(min-tablet) {
     font-size: 34px;
     line-height: 0.91;
   }
-  @media screen and(min-width: 1200px) {
+
+  @include media-size(min-desktop) {
     font-size: 58px;
   }
 }
@@ -127,15 +128,23 @@
   padding: 9px 16px;
 
   border: none;
+  cursor: pointer;
   border-radius: 20px;
   font-family: DM Sans;
   font-size: 8px;
   line-height: 1.25;
 
   transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1),
-    background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+    background-color 250ms cubic-bezier(0.4, 0, 0.2, 1),
+    transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
 
-  @media screen and(min-width:1200px) {
+  &:hover,
+  &:focus {
+    transform: scale(1.1);
+    box-shadow: 0 2px 25px rgba(255, 0, 130, 0.5);
+  }
+
+  @include media-size(min-desktop) {
     font-size: 14px;
     line-height: 1.28;
   }
@@ -151,7 +160,7 @@
     background: #c7133e;
   }
 
-  @media screen and(min-width:1200px) {
+  @include media-size(min-desktop) {
     margin-right: 15px;
   }
 }
@@ -173,7 +182,7 @@
     margin-bottom: 20px;
   }
 
-  @media screen and(min-width: 768px) {
+  @include media-size(min-tablet) {
     display: block;
     margin-left: 120px;
     padding-bottom: 34px;
@@ -186,7 +195,7 @@
     color: #ffffff;
   }
 
-  @media screen and(min-width: 1200px) {
+  @include media-size(min-desktop) {
     margin-left: 210px;
     padding-bottom: 56px;
 
@@ -200,7 +209,8 @@
 .list-locations {
   display: none;
   z-index: 2;
-  @media screen and(min-width:768px) {
+
+  @include media-size(min-tablet) {
     display: flex;
     flex-direction: column;
 
@@ -219,9 +229,11 @@
       text-transform: uppercase;
       color: #d41443;
     }
+
     & .item {
       position: relative;
     }
+
     & .text:not(:last-child) {
       margin-bottom: 14px;
     }
@@ -237,14 +249,15 @@
       width: 16px;
       height: 16px;
       border-radius: 50%;
-      @media screen and(min-width:1200px) {
+
+      @include media-size(min-desktop) {
         width: 30px;
         height: 30px;
       }
     }
   }
 
-  @media screen and(min-width:1200px) {
+  @include media-size(min-desktop) {
     font-size: 14px;
     line-height: 1.28;
     max-width: 85px;
@@ -272,141 +285,30 @@
   fill: #d41443;
 
   transition: fill 250ms cubic-bezier(0.4, 0, 0.2, 1),
-    background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+    background-color 250ms cubic-bezier(0.4, 0, 0.2, 1),
+    box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1),
+    transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
 
   &:hover,
   &:focus {
+    transform: scale(1.11);
+    box-shadow: 0 2px 25px rgba(255, 0, 130, 0.5);
     background: #d41443;
     fill: #ffffff;
   }
 
-  @media screen and(min-width:1200px) {
+  @include media-size(min-desktop) {
     width: 26px;
     height: 26px;
   }
 }
 
-.arrow {
+.icon-arrow {
   width: 10px;
   height: 10px;
 
-  @media screen and(min-width:1200px) {
+  @include media-size(min-desktop) {
     width: 15px;
     height: 15px;
-  }
-}
-
-/* --BUTTON ANIMATION-- */
-
-$fuschia: #ff0081;
-$button-bg: $fuschia;
-$button-text-color: #fff;
-$baby-blue: #f8faff;
-
-.bubbly-button {
-  appearance: none;
-  background-color: $button-bg;
-  color: $button-text-color;
-  cursor: pointer;
-  position: relative;
-  transition: transform ease-in 250ms, box-shadow ease-in 250ms;
-  box-shadow: 0 2px 25px rgba(255, 0, 130, 0.5);
-
-  &:focus {
-    outline: 0;
-  }
-
-  &:before,
-  &:after {
-    position: absolute;
-    content: '';
-    display: block;
-    width: 140%;
-    height: 100%;
-    left: -20%;
-    z-index: -1000;
-    transition: all ease-in-out 250ms;
-    background-repeat: no-repeat;
-  }
-
-  &:before {
-    display: none;
-    top: -75%;
-    background-image: radial-gradient(circle, $button-bg 20%, transparent 20%),
-      radial-gradient(circle, transparent 20%, $button-bg 20%, transparent 30%),
-      radial-gradient(circle, $button-bg 20%, transparent 20%),
-      radial-gradient(circle, $button-bg 20%, transparent 20%),
-      radial-gradient(circle, transparent 10%, $button-bg 15%, transparent 20%),
-      radial-gradient(circle, $button-bg 20%, transparent 20%),
-      radial-gradient(circle, $button-bg 20%, transparent 20%),
-      radial-gradient(circle, $button-bg 20%, transparent 20%),
-      radial-gradient(circle, $button-bg 20%, transparent 20%);
-    background-size: 10% 10%, 20% 20%, 15% 15%, 20% 20%, 18% 18%, 10% 10%,
-      15% 15%, 10% 10%, 18% 18%;
-    //background-position: 0% 80%, -5% 20%, 10% 40%, 20% 0%, 30% 30%, 22% 50%, 50% 50%, 65% 20%, 85% 30%;
-  }
-
-  &:after {
-    display: none;
-    bottom: -75%;
-    background-image: radial-gradient(circle, $button-bg 20%, transparent 20%),
-      radial-gradient(circle, $button-bg 20%, transparent 20%),
-      radial-gradient(circle, transparent 10%, $button-bg 15%, transparent 20%),
-      radial-gradient(circle, $button-bg 20%, transparent 20%),
-      radial-gradient(circle, $button-bg 20%, transparent 20%),
-      radial-gradient(circle, $button-bg 20%, transparent 20%),
-      radial-gradient(circle, $button-bg 20%, transparent 20%);
-    background-size: 15% 15%, 20% 20%, 18% 18%, 20% 20%, 15% 15%, 10% 10%,
-      20% 20%;
-    //background-position: 5% 90%, 10% 90%, 10% 90%, 15% 90%, 25% 90%, 25% 90%, 40% 90%, 55% 90%, 70% 90%;
-  }
-
-  &:hover {
-    transform: scale(0.9);
-    background-color: darken($button-bg, 5%);
-    box-shadow: 0 2px 25px rgba(255, 0, 130, 0.2);
-  }
-
-  &.animate {
-    &:before {
-      display: block;
-      animation: topBubbles ease-in-out 0.75s forwards;
-    }
-    &:after {
-      display: block;
-      animation: bottomBubbles ease-in-out 0.75s forwards;
-    }
-  }
-}
-
-@keyframes topBubbles {
-  0% {
-    background-position: 5% 90%, 10% 90%, 10% 90%, 15% 90%, 25% 90%, 25% 90%,
-      40% 90%, 55% 90%, 70% 90%;
-  }
-  50% {
-    background-position: 0% 80%, 0% 20%, 10% 40%, 20% 0%, 30% 30%, 22% 50%,
-      50% 50%, 65% 20%, 90% 30%;
-  }
-  100% {
-    background-position: 0% 70%, 0% 10%, 10% 30%, 20% -10%, 30% 20%, 22% 40%,
-      50% 40%, 65% 10%, 90% 20%;
-    background-size: 0% 0%, 0% 0%, 0% 0%, 0% 0%, 0% 0%, 0% 0%;
-  }
-}
-
-@keyframes bottomBubbles {
-  0% {
-    background-position: 10% -10%, 30% 10%, 55% -10%, 70% -10%, 85% -10%,
-      70% -10%, 70% 0%;
-  }
-  50% {
-    background-position: 0% 80%, 20% 80%, 45% 60%, 60% 100%, 75% 70%, 95% 60%,
-      105% 0%;
-  }
-  100% {
-    background-position: 0% 90%, 20% 90%, 45% 70%, 60% 110%, 75% 80%, 95% 70%,
-      110% 10%;
-    background-size: 0% 0%, 0% 0%, 0% 0%, 0% 0%, 0% 0%, 0% 0%;
   }
 }
