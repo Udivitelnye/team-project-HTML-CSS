@@ -1,27 +1,44 @@
 import "./sass/main.scss";
 
 /* --------mobile MENU------------- */
-  const menuBtnRef = document.querySelector("[data-menu-button]");
-  const menuBlockRef = document.querySelector("[data-menu-block]");
-  const headerRef = document.querySelector("[data-header]");
-const bodyRef = document.querySelector("body");
+const menuBtnRef = document.querySelector("[data-menu-button]");
+const menuBlockRef = document.querySelector("[data-menu-block]");
+const headerContainerRef = document.querySelector('[data-header-container]');
 const windowHeight = window.innerHeight;
+const bodyRef = document.querySelector("body");
+      bodyRef.classList.add('mobile-menu-close');
 
-menuBtnRef.addEventListener("click", () => {
-    const { height: menuBlockHeight } = menuBlockRef.getBoundingClientRect();
-    menuBlockHeight == windowHeight ? menuBlockRef.removeAttribute('style') : menuBlockRef.style.height=`${windowHeight}px`;
+const blockMenuOpenClose = () => {
+  const { height: menuBlockHeight} = menuBlockRef.getBoundingClientRect();
+  const { height: headerContainerHeight } = headerContainerRef.getBoundingClientRect();
 
-    const expanded =
-      menuBtnRef.getAttribute("aria-expanded") === "true" || false;
-    menuBtnRef.setAttribute("aria-expanded", !expanded);
+  if (menuBlockHeight === windowHeight) {
+    menuBlockRef.removeAttribute('style');
+    headerContainerRef.removeAttribute('style');
+  } else {
+    menuBlockRef.style.height = `${windowHeight}px`;
+    menuBlockRef.style.paddingTop = `60px`;
+    headerContainerRef.style.height = `${headerContainerHeight}px`;
+  }
 
-    menuBtnRef.classList.toggle("is-open");
-    menuBlockRef.classList.toggle("is-open");
-    menuBlockRef.classList.toggle("is-close");
+  const expanded = menuBtnRef.getAttribute("aria-expanded") === "true" || false;
+  menuBtnRef.setAttribute("aria-expanded", !expanded);
+
+  bodyRef.classList.toggle("mobile-menu-open");
+  bodyRef.classList.toggle("mobile-menu-close");
+}
+
+const resizeWindow = () => {
+  if (window.innerWidth >= 1200 && bodyRef.classList.contains("mobile-menu-open")) {
     bodyRef.classList.toggle("mobile-menu-open");
-    headerRef.classList.toggle("mobile-menu-open");
-    headerRef.classList.toggle("mobile-menu-close");
-  });
+    bodyRef.classList.toggle("mobile-menu-close");
+    menuBlockRef.removeAttribute('style');
+    headerContainerRef.removeAttribute('style');
+  }
+}
+
+menuBtnRef.addEventListener("click", blockMenuOpenClose);
+window.addEventListener('resize', resizeWindow);
 /* =========================================== */
 
 /* --------MODAL window open/close------------- */

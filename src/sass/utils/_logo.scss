@@ -1,4 +1,4 @@
-/* ---------LOGO------------ */
+/* ---------LOGO----------- */
 .logo {
   display: flex;
   justify-content: center;
@@ -12,7 +12,7 @@
 
   &:hover,
   &:focus {
-    transform: scale(0.9);
+    transform: scale(1.1);
 
     .logo__bg-img {
       box-shadow: 0 2px 25px rgba(255, 0, 130, 0.5);
@@ -23,11 +23,6 @@
       text-shadow: 0 2px 25px rgba(255, 0, 130, 0.5);
       color: $primaryColor;
     }
-  }
-
-  .header.mobile-menu-open & {
-    opacity: 0;
-    pointer-events: none;
   }
 }
 
@@ -52,4 +47,4 @@
   text-shadow: 0 2px 25px rgba(255, 0, 130, 0.2);
   @include transitionTwoProp(text-shadow, color);
 }
-/* --------------------- */
+/* ---------^LOGO^------------ */
