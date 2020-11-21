@@ -8,8 +8,20 @@ const bodyRef = document.querySelector("body");
 const windowHeight = window.innerHeight;
 
 menuBtnRef.addEventListener("click", () => {
-    const { height: menuBlockHeight } = menuBlockRef.getBoundingClientRect();
-    menuBlockHeight == windowHeight ? menuBlockRef.removeAttribute('style') : menuBlockRef.style.height=`${windowHeight}px`;
+  const { height: menuBlockHeight} = menuBlockRef.getBoundingClientRect();
+  const { height: headerHeight } = headerRef.getBoundingClientRect();
+
+// console.log(`menuBlockHeight=`,menuBlockHeight);
+//     console.log(`windowHeight=`,windowHeight);
+
+  if (menuBlockHeight === windowHeight) {
+    menuBlockRef.removeAttribute('style')
+  } else {
+    menuBlockRef.style.height = `${windowHeight}px`;
+    if (window.innerWidth >= 768) {
+      menuBlockRef.style.paddingTop = `${headerHeight}px`;
+    }
+  }
 
     const expanded =
       menuBtnRef.getAttribute("aria-expanded") === "true" || false;
@@ -20,8 +32,35 @@ menuBtnRef.addEventListener("click", () => {
     menuBlockRef.classList.toggle("is-close");
     bodyRef.classList.toggle("mobile-menu-open");
     headerRef.classList.toggle("mobile-menu-open");
+  headerRef.classList.toggle("mobile-menu-close");
+});
+
+const resizeWindow = () => {
+  if (window.innerWidth > 1200 && menuBlockRef.classList.contains("is-open")) {
+    menuBtnRef.classList.toggle("is-open");
+    menuBlockRef.classList.toggle("is-open");
+    menuBlockRef.classList.toggle("is-close");
+    bodyRef.classList.toggle("mobile-menu-open");
+    headerRef.classList.toggle("mobile-menu-open");
     headerRef.classList.toggle("mobile-menu-close");
-  });
+    console.log("success");
+    console.log(`menuBlockHeight=`,menuBlockHeight);
+    console.log(`windowHeight=`,windowHeight);
+
+    const { height: menuBlockHeight} = menuBlockRef.getBoundingClientRect();
+  const { height: headerHeight } = headerRef.getBoundingClientRect();
+
+    if (menuBlockHeight === windowHeight) {
+      menuBlockRef.removeAttribute('style')
+    } else {
+        menuBlockRef.style.height = `${windowHeight}px`;
+        if (window.innerWidth >= 768) {
+          menuBlockRef.style.paddingTop = `${headerHeight}px`;
+        }
+      }
+  }
+}
+window.addEventListener('resize', resizeWindow);
 /* =========================================== */
 
 /* --------MODAL window open/close------------- */
