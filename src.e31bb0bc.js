@@ -189,10 +189,169 @@ var reloadCSS = require('_css_loader');
 
 module.hot.dispose(reloadCSS);
 module.hot.accept(reloadCSS);
-},{"_css_loader":"../node_modules/parcel-bundler/src/builtins/css-loader.js"}],"index.js":[function(require,module,exports) {
+},{"./../img/hero/icecream171@1x.png":[["icecream171@1x.a10f9c36.png","img/hero/icecream171@1x.png"],"img/hero/icecream171@1x.png"],"./../img/hero/elipse.svg":[["elipse.86e3cf9b.svg","img/hero/elipse.svg"],"img/hero/elipse.svg"],"./../img/hero/icecream171@2x.png":[["icecream171@2x.02f22c9d.png","img/hero/icecream171@2x.png"],"img/hero/icecream171@2x.png"],"./../img/hero/icecream143@1x.png":[["icecream143@1x.b6b95819.png","img/hero/icecream143@1x.png"],"img/hero/icecream143@1x.png"],"./../img/hero/tasty168@1x.png":[["tasty168@1x.c70f75d5.png","img/hero/tasty168@1x.png"],"img/hero/tasty168@1x.png"],"./../img/hero/milk124@1x.png":[["milk124@1x.760642b0.png","img/hero/milk124@1x.png"],"img/hero/milk124@1x.png"],"./../img/hero/icecream143@2x.png":[["icecream143@2x.e1381819.png","img/hero/icecream143@2x.png"],"img/hero/icecream143@2x.png"],"./../img/hero/tasty168@2x.png":[["tasty168@2x.d5b58321.png","img/hero/tasty168@2x.png"],"img/hero/tasty168@2x.png"],"./../img/hero/milk124@2x.png":[["milk124@2x.e2609c32.png","img/hero/milk124@2x.png"],"img/hero/milk124@2x.png"],"./../img/hero/icecream236@1x.png":[["icecream236@1x.e272e671.png","img/hero/icecream236@1x.png"],"img/hero/icecream236@1x.png"],"./../img/hero/tasty293@1x.png":[["tasty293@1x.12f7a02d.png","img/hero/tasty293@1x.png"],"img/hero/tasty293@1x.png"],"./../img/hero/milk188@1x.png":[["milk188@1x.74ec2478.png","img/hero/milk188@1x.png"],"img/hero/milk188@1x.png"],"./../img/hero/icecream236@2x.png":[["icecream236@2x.7db8d304.png","img/hero/icecream236@2x.png"],"img/hero/icecream236@2x.png"],"./../img/hero/tasty293@2x.png":[["tasty293@2x.4282f6b8.png","img/hero/tasty293@2x.png"],"img/hero/tasty293@2x.png"],"./../img/hero/milk188@2x.png":[["milk188@2x.7a110141.png","img/hero/milk188@2x.png"],"img/hero/milk188@2x.png"],"./../img/img_product/mobile/ice-cream.png":[["ice-cream.a71d41dc.png","img/img_product/mobile/ice-cream.png"],"img/img_product/mobile/ice-cream.png"],"./../img/img_product/mobile/ice-cream@2x.png":[["ice-cream@2x.a82c18a8.png","img/img_product/mobile/ice-cream@2x.png"],"img/img_product/mobile/ice-cream@2x.png"],"./../img/img_product/tablet/ice-cream.png":[["ice-cream.dad646cc.png","img/img_product/tablet/ice-cream.png"],"img/img_product/tablet/ice-cream.png"],"./../img/img_product/tablet/ice-cream@2x.png":[["ice-cream@2x.01519e2d.png","img/img_product/tablet/ice-cream@2x.png"],"img/img_product/tablet/ice-cream@2x.png"],"./../img/img_product/desktop/ice-cream.png":[["ice-cream.15de41fe.png","img/img_product/desktop/ice-cream.png"],"img/img_product/desktop/ice-cream.png"],"./../img/img_product/desktop/ice-cream@2x.png":[["ice-cream@2x.126e36d4.png","img/img_product/desktop/ice-cream@2x.png"],"img/img_product/desktop/ice-cream@2x.png"],"./../img/img_product/mobile/ice-coffee.png":[["ice-coffee.7ce4da42.png","img/img_product/mobile/ice-coffee.png"],"img/img_product/mobile/ice-coffee.png"],"./../img/img_product/mobile/ice-coffee@2x.png":[["ice-coffee@2x.4da77b68.png","img/img_product/mobile/ice-coffee@2x.png"],"img/img_product/mobile/ice-coffee@2x.png"],"./../img/img_product/tablet/ice-coffee.png":[["ice-coffee.1e1d3e0f.png","img/img_product/tablet/ice-coffee.png"],"img/img_product/tablet/ice-coffee.png"],"./../img/img_product/tablet/ice-coffee@2x.png":[["ice-coffee@2x.833a89b6.png","img/img_product/tablet/ice-coffee@2x.png"],"img/img_product/tablet/ice-coffee@2x.png"],"./../img/img_product/desktop/ice-coffee.png":[["ice-coffee.3e93d36f.png","img/img_product/desktop/ice-coffee.png"],"img/img_product/desktop/ice-coffee.png"],"./../img/img_product/desktop/ice-coffee@2x.png":[["ice-coffee@2x.d291e42e.png","img/img_product/desktop/ice-coffee@2x.png"],"img/img_product/desktop/ice-coffee@2x.png"],"./../img/img_product/mobile/milkshake.png":[["milkshake.7a02886d.png","img/img_product/mobile/milkshake.png"],"img/img_product/mobile/milkshake.png"],"./../img/img_product/mobile/milkshake@2x.png":[["milkshake@2x.847b40c0.png","img/img_product/mobile/milkshake@2x.png"],"img/img_product/mobile/milkshake@2x.png"],"./../img/img_product/tablet/milkshake.png":[["milkshake.ddf0c6be.png","img/img_product/tablet/milkshake.png"],"img/img_product/tablet/milkshake.png"],"./../img/img_product/tablet/milkshake@2x.png":[["milkshake@2x.b129ee7a.png","img/img_product/tablet/milkshake@2x.png"],"img/img_product/tablet/milkshake@2x.png"],"./../img/img_product/desktop/milkshake.png":[["milkshake.eb96751c.png","img/img_product/desktop/milkshake.png"],"img/img_product/desktop/milkshake.png"],"./../img/img_product/desktop/milkshake@2x.png":[["milkshake@2x.09008a09.png","img/img_product/desktop/milkshake@2x.png"],"img/img_product/desktop/milkshake@2x.png"],"/Users/a1/Documents/GitHub/team-project-HTML-CSS/src/img/tradition/bg-320-@1x.png":[["bg-320-@1x.26bc7d66.png","img/tradition/bg-320-@1x.png"],"img/tradition/bg-320-@1x.png"],"/Users/a1/Documents/GitHub/team-project-HTML-CSS/src/img/tradition/bg-1282-@1x.png":[["bg-1282-@1x.a5c34384.png","img/tradition/bg-1282-@1x.png"],"img/tradition/bg-1282-@1x.png"],"/Users/a1/Documents/GitHub/team-project-HTML-CSS/src/img/tradition/bg-320-@2x.png":[["bg-320-@2x.6f609c28.png","img/tradition/bg-320-@2x.png"],"img/tradition/bg-320-@2x.png"],"/Users/a1/Documents/GitHub/team-project-HTML-CSS/src/img/tradition/bg-1282-@2x.png":[["bg-1282-@2x.6c453d77.png","img/tradition/bg-1282-@2x.png"],"img/tradition/bg-1282-@2x.png"],"/Users/a1/Documents/GitHub/team-project-HTML-CSS/src/img/tradition/milk.svg":[["milk.dde807e0.svg","img/tradition/milk.svg"],"img/tradition/milk.svg"],"/Users/a1/Documents/GitHub/team-project-HTML-CSS/src/img/tradition/food.svg":[["food.89ce740a.svg","img/tradition/food.svg"],"img/tradition/food.svg"],"/Users/a1/Documents/GitHub/team-project-HTML-CSS/src/img/tradition/heart.svg":[["heart.31c572ac.svg","img/tradition/heart.svg"],"img/tradition/heart.svg"],"./../img/gallery/text.svg":[["text.fe197b06.svg","img/gallery/text.svg"],"img/gallery/text.svg"],"./../img/gallery/group.svg":[["group.8d4ff59c.svg","img/gallery/group.svg"],"img/gallery/group.svg"],"_css_loader":"../node_modules/parcel-bundler/src/builtins/css-loader.js"}],"index.js":[function(require,module,exports) {
 "use strict";
 
 require("./sass/main.scss");
+
+/* --------mobile MENU------------- */
+var menuBtnRef = document.querySelector("[data-menu-button]");
+var menuBlockRef = document.querySelector("[data-menu-block]");
+var headerRef = document.querySelector("[data-header]");
+var bodyRef = document.querySelector("body");
+var windowHeight = window.innerHeight;
+menuBtnRef.addEventListener("click", function () {
+  var _menuBlockRef$getBoun = menuBlockRef.getBoundingClientRect(),
+      menuBlockHeight = _menuBlockRef$getBoun.height;
+
+  menuBlockHeight == windowHeight ? menuBlockRef.removeAttribute('style') : menuBlockRef.style.height = "".concat(windowHeight, "px");
+  var expanded = menuBtnRef.getAttribute("aria-expanded") === "true" || false;
+  menuBtnRef.setAttribute("aria-expanded", !expanded);
+  menuBtnRef.classList.toggle("is-open");
+  menuBlockRef.classList.toggle("is-open");
+  menuBlockRef.classList.toggle("is-close");
+  bodyRef.classList.toggle("mobile-menu-open");
+  headerRef.classList.toggle("mobile-menu-open");
+  headerRef.classList.toggle("mobile-menu-close");
+});
+/* =========================================== */
+
+/* --------MODAL window open/close------------- */
+
+var refs = {
+  openModalBtn: document.querySelector("[data-modal-open]"),
+  closeModalBtn: document.querySelector("[data-modal-close]"),
+  backdrop: document.querySelector("[data-backdrop]")
+};
+
+if (refs.openModalBtn) {
+  refs.openModalBtn.addEventListener("click", toggleModal);
+  refs.closeModalBtn.addEventListener("click", toggleModal);
+  refs.backdrop.addEventListener('click', onBackdropClick);
+}
+
+;
+
+function onBackdropClick(event) {
+  if (event.target === event.currentTarget) {
+    toggleModal();
+  }
+
+  ;
+}
+
+;
+
+function toggleModal() {
+  refs.backdrop.classList.contains("is-hidden") ? window.addEventListener('keydown', onPressEscape) : window.removeEventListener('keydown', onPressEscape);
+  refs.backdrop.classList.toggle("is-hidden");
+}
+
+;
+
+function onPressEscape(event) {
+  if (event.code === 'Escape') {
+    toggleModal();
+  }
+
+  ;
+}
+
+;
+/* add focus on modal */
+
+var modalRef = document.querySelector('[data-modal]');
+refs.openModalBtn.addEventListener('click', modalFocus);
+
+function modalFocus() {
+  modalRef.focus();
+  modalRef.style.outline = 'none';
+}
+/* CHECKBOX-icon in modal add attribute CHECKED */
+
+
+var checkboxIconRef = document.querySelector('[data-checkbox-icon]');
+var checkboxInputRef = document.querySelector('[data-checkbox-input]');
+var checkboxLabelRef = document.querySelector('[data-checkbox-label]');
+checkboxLabelRef.addEventListener('click', byClickChecked);
+checkboxIconRef.addEventListener('focus', addEventListenerAddChecked());
+
+function addEventListenerAddChecked() {
+  window.addEventListener('keydown', onPressEnterAdd);
+}
+
+;
+
+function onPressEnterAdd(event) {
+  if (event.target.classList.contains('checkbox-icon') && event.code === 'Enter') {
+    checkboxInputRef.setAttribute('checked', '');
+    checkboxIconRef.classList.add('checked');
+    window.removeEventListener('keydown', onPressEnterAdd);
+    window.addEventListener('keydown', onPressEnterRemove);
+  }
+}
+
+;
+
+function onPressEnterRemove(event) {
+  if (event.target.classList.contains('checkbox-icon') && event.code === 'Enter') {
+    checkboxInputRef.removeAttribute('checked');
+    checkboxIconRef.classList.remove('checked');
+    window.removeEventListener('keydown', onPressEnterRemove);
+    addEventListenerAddChecked();
+  }
+}
+
+;
+
+function byClickChecked(event) {
+  if (event.target.classList.contains('form__text-checkbox') || event.target.classList.contains('checkbox-icon')) {
+    if (checkboxInputRef.hasAttribute('checked')) {
+      checkboxInputRef.removeAttribute('checked');
+      checkboxIconRef.classList.remove('checked');
+      addEventListenerAddChecked();
+    } else {
+      checkboxInputRef.setAttribute('checked', '');
+      checkboxIconRef.classList.add('checked');
+      window.addEventListener('keydown', onPressEnterRemove);
+    }
+
+    ;
+  }
+
+  ;
+}
+
+;
+/* ========================================= */
+
+/* --------FORM in modal window------------- */
+
+var formModalRef = document.querySelector('[data-form-modal]');
+
+var takeFormData = function takeFormData(event) {
+  event.preventDefault(); //забороняє браузеру відправляти форму при натисканні кнопки
+  // console.dir(event.target.elements); //так можна отримати доступ до елементів форми
+
+  var formRef = event.target; // тут міститься посилання на форму
+
+  var formData = new FormData(formRef); //створюємо новий об'єкт
+
+  var submittedData = {}; //об'єкт для збору даних з форми, який надішлеться на бекенд
+
+  formData.forEach(function (value, key) {
+    //цей об'єкт просто має ф-цію форіч і дані інпутів у вигляді value та key = name інпута
+    submittedData[key] = value; //записуємо дані в об'єкт
+  });
+  console.dir(submittedData);
+};
+
+if (formModalRef) {
+  formModalRef.addEventListener('submit', takeFormData);
+}
+
+;
+/* --------------------- */
 },{"./sass/main.scss":"sass/main.scss"}],"../node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
@@ -221,7 +380,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "61534" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "57564" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
