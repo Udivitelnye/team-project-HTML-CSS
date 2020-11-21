@@ -435,6 +435,8 @@
 
   border: none;
   border-radius: 22px;
+  // display: flex;
+  // vertical-align: middle;
 
   @include mobile-end-s {
     font-size: 14px;
@@ -452,7 +454,7 @@
   color: $titleColor;
 }
 
-.tradition__button:hover,
+/*.tradition__button:hover,
 .tradition__button:focus {
   background-color: #ecebeb;
-}
+} /* для моей кнопки*/
