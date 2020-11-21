@@ -35,19 +35,6 @@
   display: flex;
   align-items: center;
   justify-content: center;
-
-  @include media-size(desktop-1) {
-    .menu-block.is-open & {
-      margin-bottom: 15px;
-      margin-left: auto;
-      margin-right: auto;
-      width: 209px;
-    }
-  }
-
-  @include media-size(min-desktop) {
-    margin-left: 110px;
-  }
 }
 
 .buttons__icon {
@@ -69,7 +56,7 @@
 
   &:hover,
   &:focus {
-    transform: scale(0.9);
+    transform: scale(1.1);
     background-color: darken($primaryColor, 5%);
   }
 }

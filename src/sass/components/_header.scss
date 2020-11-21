@@ -1,31 +1,10 @@
+/* ----------HEADER----------- */
 .header {
   position: absolute;
   z-index: 900;
   width: 100%;
   top: 0;
   right: 0;
-
-  &.mobile-menu-open {
-    padding-top: 6px;
-    @include media-size(tablet-1) {
-      background-color: $menuBgColor;
-    }
-    @include media-size(min-tablet-desktop-1) {
-      // background-image: linear-gradient(
-      //   to left,
-      //   $menuBgColor 30%,
-      //   rgb(0, 0, 0, 0) 30%
-      // );
-    }
-  }
-
-  &.mobile-menu-close {
-    @include media-size(min-tablet-desktop-1) {
-      .menu-button {
-        margin-right: 30px;
-      }
-    }
-  }
 
   @include media-size(tablet-1) {
     padding-top: 6px;
@@ -35,31 +14,27 @@
   @include media-size(min-tablet-desktop-1) {
     padding-top: 37px;
   }
-}
 
-.header .container {
-  display: flex;
-  align-items: center;
-  width: 100%;
+  .container {
+    display: flex;
+    align-items: center;
+    width: 100%;
 
-  @include media-size(tablet-1) {
-    max-width: 450px;
+    @include media-size(tablet-1) {
+      max-width: 450px;
+    }
+
+    @include media-size(min-tablet-desktop-1) {
+      max-width: 848px;
+    }
+
+    @include media-size(min-desktop) {
+      max-width: 1280px;
+    }
   }
-
-  @include media-size(min-tablet-desktop-1) {
-    max-width: 848px;
-  }
-
-  @include media-size(min-desktop) {
-    max-width: 1280px;
-  }
 }
-
-.header.mobile-menu-open .container {
-  max-width: 100%;
-}
-
-/* ----------MENU----------- */
+/* ----------HEADER----------- */
+/* ----------MENU NAV div----------- */
 .menu-block {
   @include media-size(desktop-1) {
     pointer-events: none;
@@ -71,79 +46,92 @@
     justify-content: space-between;
     align-items: center;
   }
+
+  body.mobile-menu-close & {
+    @include media-size(tablet-1) {
+      position: absolute;
+      pointer-events: none;
+      opacity: 0;
+    }
+
+    @include media-size(min-tablet-desktop-1) {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      pointer-events: auto;
+      opacity: 1;
+    }
+  }
+
+  body.mobile-menu-open & {
+    @include media-size(tablet-1) {
+      position: absolute;
+      width: 100%;
+      top: 0;
+      right: 0;
+
+      display: flex;
+      flex-direction: column-reverse;
+      justify-content: flex-end;
+      pointer-events: auto;
+      opacity: 1;
+      background-color: $menuBgColor;
+    }
+
+    @include media-size(min-tablet-desktop-1) {
+      position: fixed;
+      width: 254px;
+      top: 0;
+      right: 0;
+
+      display: flex;
+      flex-direction: column-reverse;
+      justify-content: flex-end;
+      pointer-events: auto;
+      opacity: 1;
+      background-color: $menuBgColor;
+    }
+  }
+
+  .buttons-with-icon {
+    @include media-size(min-desktop) {
+      margin-left: 110px;
+    }
+
+    body.mobile-menu-open & {
+      @include media-size(desktop-1) {
+        margin-bottom: 15px;
+        margin-left: auto;
+        margin-right: auto;
+        width: 186px;
+      }
+      @include media-size(tablet-1) {
+        width: 209px;
+      }
+    }
+  }
 }
-
-.menu-block.is-open {
-  @include media-size(tablet-1) {
-    position: absolute;
-    width: 100%;
-    top: 100%-1;
-    right: 0;
-
-    display: flex;
-    flex-direction: column-reverse;
-    justify-content: flex-end;
-    pointer-events: auto;
-    opacity: 1;
-    background-color: $menuBgColor;
-  }
-
-  @include media-size(min-tablet-desktop-1) {
-    position: absolute;
-    width: 30%;
-    top: 0;
-    right: 0;
-
-    display: flex;
-    flex-direction: column-reverse;
-    justify-content: flex-end;
-    pointer-events: auto;
-    opacity: 1;
-    background-color: $menuBgColor;
-  }
-}
-
-.menu-block.is-close {
-  @include media-size(tablet-1) {
-    position: absolute;
-    pointer-events: none;
-    opacity: 0;
-  }
-
-  @include media-size(min-tablet-desktop-1) {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    pointer-events: auto;
-    opacity: 1;
-  }
-}
-
+/* -----------------MENU NAV div------------------ */
+/* -----------NAVIGATION UL LIST------------------ */
 .header__nav {
   @include media-size(desktop-1) {
-    .menu-block.is-close & {
+    body.mobile-menu-close & {
       transform: translateX(100%);
       pointer-events: none;
       visibility: hidden;
       @include visuallyHidden;
     }
 
-    .menu-block.is-open & {
+    body.mobile-menu-open & {
       transform: translateX(0);
       @include transitionTwoProp(transform, opacity, 250ms);
     }
 
     .item {
-      border-top: 1px solid #e18298;
-      border-bottom: 1px solid #e18298;
-    }
-
-    .item:first-child {
-      border-top: 2px solid #e18298;
-    }
-
-    .item:last-child {
       border-bottom: 2px solid #e18298;
+      &:first-child {
+        border-top: 2px solid #e18298;
+      }
     }
   }
 
@@ -152,10 +140,9 @@
 
     .item {
       flex-shrink: 0;
-    }
-
-    .item:not(:last-child) {
-      margin-right: 35px;
+      &:not(:last-child) {
+        margin-right: 35px;
+      }
     }
   }
 
@@ -179,12 +166,12 @@
     &:hover,
     &:focus {
       color: $accentColor;
-      transform: scale(0.9);
+      transform: scale(1.1);
     }
   }
 }
-
-/* -----------MENU BUTTON close/open------------------ */
+/* -----------NAVIGATION UL LIST------------------ */
+/* -----------MENU BUTTON close/open------------ */
 .menu-button {
   display: flex;
   justify-content: center;
@@ -197,30 +184,24 @@
   background-color: transparent;
   cursor: pointer;
 
-  @include media-size(min-tablet-desktop-1) {
-    .header.mobile-menu-open & {
-      position: relative;
+  @include media-size(desktop-1) {
+    body.mobile-menu-open & {
+      position: absolute;
       z-index: 901;
+      top: 20px;
+      right: 20px;
+    }
+  }
+
+  @include media-size(min-tablet-desktop-1) {
+    body.mobile-menu-close & {
+      margin-right: 30px;
     }
   }
 
   @include media-size(min-desktop) {
     @include visuallyHidden;
     visibility: hidden;
-  }
-
-  .icon-close {
-    display: none;
-  }
-
-  &.is-open {
-    .icon-close {
-      display: block;
-    }
-
-    .icon-open {
-      display: none;
-    }
   }
 }
 
@@ -233,6 +214,18 @@
     stroke: $primaryColor;
     stroke-width: 2;
   }
-}
 
-/* ----------------------------- */
+  .icon-close {
+    display: none;
+    body.mobile-menu-open & {
+      display: block;
+    }
+  }
+
+  .icon-open {
+    body.mobile-menu-open & {
+      display: none;
+    }
+  }
+}
+/* -----------MENU BUTTON close/open------------ */

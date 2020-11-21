@@ -7,7 +7,9 @@ body {
 }
 
 body.mobile-menu-open {
-  overflow: hidden;
+  @include media-size(tablet-1) {
+    overflow: hidden;
+  }
 }
 
 * {
