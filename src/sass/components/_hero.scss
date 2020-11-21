@@ -115,7 +115,7 @@
   color: $titleColor;
   grid-column: 1;
   grid-row: 1;
-  animation: glow 2s ease-in-out infinite alternate;
+  animation: glow 750ms ease-in-out infinite alternate;
 
   @include media-size(min-tablet) {
     font-size: 34px;
