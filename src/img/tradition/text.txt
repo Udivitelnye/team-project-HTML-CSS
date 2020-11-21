@@ -20,7 +20,5 @@
 - добавлена Retina
 8. HTML and CSS - Mobile, Tablet, Desktop (3.5)
 - fonts перенесены в tradition (SCSS)
-
-
-To Do:
-4. анимация
+9. HTML and CSS - Mobile, Tablet, Desktop (4.0)
+- добавлена анимация кнопки
