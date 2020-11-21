@@ -25,13 +25,15 @@ const maxNumberFood = Number(countFoodRef.textContent);
 const printNumbers = (from, to, elementRef, interval) => {
   let current = from;
 
-  let timerId = setInterval( () => {
-      elementRef.textContent = current;
+  const inCrement = () => {
+    elementRef.textContent = current;
     if (current === to) {
-      clearInterval(timerId);
+      return;
     }
     current += 1;
-  }, interval);
+  }
+
+  setInterval(inCrement, interval);
 }
 
 printNumbers(0, maxNumberCafe, countCafeRef, 150);
