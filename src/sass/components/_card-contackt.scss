@@ -1,0 +1,153 @@
+.card-contackt {
+  font-family: 'DM Sans', sans-serif;
+  margin-right: auto;
+  margin-left: auto;
+  text-align: center;
+  padding-bottom: 82.5px;
+  background-color: $primaryColor;
+
+  background-position: top;
+  background-repeat: no-repeat;
+  background-image: url(../../img/card-contackt/bg_card-contackt.png);
+}
+
+.card-container {
+  display: inline-block;
+  margin-top: -102px;
+  max-width: 100%;
+  padding: 0 115px;
+}
+
+.card__list {
+  display: flex;
+  margin-bottom: 86px;
+  list-style: none;
+}
+
+.card__item {
+  position: relative;
+  overflow: hidden;
+
+  text-align: left;
+
+  background: $primaryColor;
+  box-shadow: 0px 8px 30px rgba(212, 20, 67, 0.1);
+  border-radius: 24px;
+  width: calc((100% - 30px * 2) / 3);
+  padding: 52px 44px 61px;
+}
+.card__item:not(:last-child) {
+  margin-right: 30px;
+}
+
+.card__text {
+  margin-bottom: 32px;
+  font-size: 16px;
+  color: $thirdColor;
+  letter-spacing: 0.04em;
+}
+
+.card__title {
+  margin-bottom: 10px;
+  letter-spacing: 0.04em;
+}
+
+.card__title--cafe {
+  font-style: normal;
+  font-weight: 500;
+  width: 73px;
+  height: 28px;
+  letter-spacing: 0.04em;
+
+  color: $primaryColor;
+  background-color: #f0d1a5;
+  border-radius: 6px;
+}
+
+.card__title--truck {
+  font-style: normal;
+  font-weight: 500;
+  height: 28px;
+  width: 138px;
+  letter-spacing: 0.04em;
+
+  color: $primaryColor;
+  background-color: #c2e297;
+  border-radius: 6px;
+}
+
+.card__caption {
+  display: inline-block;
+  margin-bottom: 32px;
+}
+
+.working-schedule {
+  margin-bottom: 32px;
+  padding: 32px 0;
+  border-top: 1px solid #e1e1e1;
+  border-bottom: 1px solid #e1e1e1;
+  list-style: none;
+}
+
+.working-day__text {
+  font-style: normal;
+  font-weight: 500;
+  margin-bottom: 25px;
+  color: $secondaryColor;
+}
+
+.working-day__time {
+  font-size: 16px;
+  color: $extitleColor;
+}
+
+.contackt__list {
+  padding: 0;
+  list-style: none;
+}
+
+.contackt__link {
+  font-size: 16px;
+  font-style: normal;
+  color: $thirdColor;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin: auto;
+  list-style: none;
+}
+
+.card__button-left {
+  min-width: 176px;
+  min-height: 44px;
+  color: $primaryColor;
+  margin-right: 15px;
+  font-weight: 700;
+  font-size: 16px;
+  letter-spacing: 0.06em;
+  background-color: $accentColor;
+  border-radius: 22px;
+  border: 0 solid transparent;
+  cursor: pointer;
+}
+
+.card__button-right {
+  min-width: 176px;
+  min-height: 44px;
+  color: $accentColor;
+  font-weight: 700;
+  font-size: 16px;
+  letter-spacing: 0.06em;
+  background-color: $primaryColor;
+  border-radius: 22px;
+  border: 0 solid transparent;
+  cursor: pointer;
+}
+
+.card__button-right:hover,
+.card__button-right:focus {
+  background-color: #ecebeb;
+}
