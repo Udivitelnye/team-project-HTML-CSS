@@ -36,47 +36,39 @@
 /* ----------HEADER----------- */
 /* ----------MENU NAV div----------- */
 .menu-block {
-  @include media-size(desktop-1) {
+  display: flex;
+  @include media-size(tablet-1) {
+    position: absolute;
+    width: 100%;
+    top: 0;
+    right: 0;
+    flex-direction: column-reverse;
+    justify-content: flex-end;
     pointer-events: none;
     opacity: 0;
+    //try
+    // @include transitionTwoProp(
+    //   background-color,
+    //   opacity,
+    //   250ms,
+    //   0ms
+    // ); // має працювати на закриття
+    //end
+  }
+
+  @include media-size(min-tablet) {
+    justify-content: space-between;
   }
 
   @include media-size(min-desktop) {
-    display: flex;
-    justify-content: space-between;
     align-items: center;
   }
 
-  body.mobile-menu-close & {
-    @include media-size(tablet-1) {
-      position: absolute;
-      pointer-events: none;
-      opacity: 0;
-    }
-
-    @include media-size(min-tablet-desktop-1) {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      pointer-events: auto;
-      opacity: 1;
-    }
-  }
-
   body.mobile-menu-open & {
-    @include media-size(tablet-1) {
-      position: absolute;
-      width: 100%;
-      top: 0;
-      right: 0;
-
-      display: flex;
-      flex-direction: column-reverse;
-      justify-content: flex-end;
-      pointer-events: auto;
-      opacity: 1;
-      background-color: $menuBgColor;
-    }
+    pointer-events: auto;
+    opacity: 1;
+    background-color: $menuBgColor;
+    @include transition(opacity, 250ms, 0ms); //працює на відкриття меню
 
     @include media-size(min-tablet-desktop-1) {
       position: fixed;
@@ -87,12 +79,10 @@
       display: flex;
       flex-direction: column-reverse;
       justify-content: flex-end;
-      pointer-events: auto;
-      opacity: 1;
-      background-color: $menuBgColor;
     }
   }
-
+  /* -----------------MENU NAV div------------------ */
+  /* -----------------button BUY NOW------------------ */
   .buttons-with-icon {
     @include media-size(min-desktop) {
       margin-left: 110px;
@@ -111,7 +101,7 @@
     }
   }
 }
-/* -----------------MENU NAV div------------------ */
+/* -----------------button BUY NOW------------------ */
 /* -----------NAVIGATION UL LIST------------------ */
 .header__nav {
   @include media-size(desktop-1) {
@@ -124,7 +114,7 @@
 
     body.mobile-menu-open & {
       transform: translateX(0);
-      @include transitionTwoProp(transform, opacity, 250ms);
+      @include transition(transform, 250ms, 250ms); //працює на відкриття меню
     }
 
     .item {
@@ -166,7 +156,10 @@
     &:hover,
     &:focus {
       color: $accentColor;
-      transform: scale(1.1);
+      transform: scale(0.9);
+      @include media-size(min-desktop) {
+        transform: scale(1.1);
+      }
     }
   }
 }
@@ -183,11 +176,12 @@
   border: none;
   background-color: transparent;
   cursor: pointer;
+  // @include transition(all, 250ms);
 
   @include media-size(desktop-1) {
     body.mobile-menu-open & {
       position: absolute;
-      z-index: 901;
+      z-index: 902;
       top: 20px;
       right: 20px;
     }
@@ -229,3 +223,19 @@
   }
 }
 /* -----------MENU BUTTON close/open------------ */
+
+/* бекдроп для меню */
+.wrapper {
+  z-index: 901;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  transform: translateX(100%);
+  @include transition(transform);
+}
+
+.animate {
+  transform: translateX(0);
+}

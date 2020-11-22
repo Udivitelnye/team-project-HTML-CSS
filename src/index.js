@@ -13,8 +13,8 @@ const blockMenuOpenClose = () => {
   const { height: headerContainerHeight } = headerContainerRef.getBoundingClientRect();
 
   if (menuBlockHeight === windowHeight) {
-    menuBlockRef.removeAttribute('style');
     headerContainerRef.removeAttribute('style');
+    menuBlockRef.removeAttribute('style');
   } else {
     menuBlockRef.style.height = `${windowHeight}px`;
     menuBlockRef.style.paddingTop = `60px`;
@@ -26,7 +26,45 @@ const blockMenuOpenClose = () => {
 
   bodyRef.classList.toggle("mobile-menu-open");
   bodyRef.classList.toggle("mobile-menu-close");
+
+/* ----------------------------додаю бекдроп для блоку меню---------------------------- */
+  const menuBlockParentRef = menuBlockRef.parentNode;
+  if (menuBlockParentRef.classList.contains('container')) {
+    const wrapperRef = document.createElement("div");
+    wrapperRef.classList.add('wrapper');
+    wrapperRef.appendChild(menuBlockRef);
+    menuBlockParentRef.appendChild(wrapperRef);
+    setTimeout(()=> wrapperRef.classList.add('animate'), 250);
+
+    /* -----вішаю на обгортку умови закриття по кліку та натисканням ескейп---- */
+    wrapperRef.addEventListener('click', onWrapperClick)  ;
+
+    function onWrapperClick(event) {
+      if (event.target === event.currentTarget) {
+        toggleWrapper();
+      };
+    };
+
+    function toggleWrapper() {
+      bodyRef.classList.toggle("mobile-menu-open");
+      bodyRef.classList.toggle("mobile-menu-close");
+      headerContainerRef.removeAttribute('style');
+      menuBlockRef.removeAttribute('style');
+      menuBlockParentRef.appendChild(menuBlockRef);
+      const wrapperRef = document.querySelector('.wrapper');
+      wrapperRef.remove();
+    };
+  } else {
+    /* ----видаляю бекдроп для блоку меню---- */
+    const wrapperRef = document.querySelector('.wrapper');
+    const menuBlockGrandPaRef = menuBlockParentRef.parentNode;
+    menuBlockGrandPaRef.appendChild(menuBlockRef);
+    wrapperRef.remove();
+  }
+  /* ------------------кінець коду по бекдропу меню------------------------------ */
 }
+
+
 
 const resizeWindow = () => {
   if (window.innerWidth >= 1200 && bodyRef.classList.contains("mobile-menu-open")) {
@@ -34,6 +72,15 @@ const resizeWindow = () => {
     bodyRef.classList.toggle("mobile-menu-close");
     menuBlockRef.removeAttribute('style');
     headerContainerRef.removeAttribute('style');
+
+    /* видаляю обгортку для меню блок, якщо вона є */
+    const menuBlockParentRef = menuBlockRef.parentNode;
+    if (menuBlockParentRef.classList.contains('wrapper')) {
+      const menuBlockGrandPaRef = menuBlockParentRef.parentNode;
+      menuBlockGrandPaRef.appendChild(menuBlockRef);
+      menuBlockParentRef.remove();
+    }
+    /* ------------------кінець коду по обгортці меню------------ */
   }
 }
 
