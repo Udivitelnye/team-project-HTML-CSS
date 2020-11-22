@@ -197,23 +197,103 @@ require("./sass/main.scss");
 /* --------mobile MENU------------- */
 var menuBtnRef = document.querySelector("[data-menu-button]");
 var menuBlockRef = document.querySelector("[data-menu-block]");
-var headerRef = document.querySelector("[data-header]");
-var bodyRef = document.querySelector("body");
+var headerContainerRef = document.querySelector('[data-header-container]');
 var windowHeight = window.innerHeight;
-menuBtnRef.addEventListener("click", function () {
+var bodyRef = document.querySelector("body");
+bodyRef.classList.add('mobile-menu-close');
+
+var blockMenuOpenClose = function blockMenuOpenClose() {
   var _menuBlockRef$getBoun = menuBlockRef.getBoundingClientRect(),
       menuBlockHeight = _menuBlockRef$getBoun.height;
 
-  menuBlockHeight == windowHeight ? menuBlockRef.removeAttribute('style') : menuBlockRef.style.height = "".concat(windowHeight, "px");
+  var _headerContainerRef$g = headerContainerRef.getBoundingClientRect(),
+      headerContainerHeight = _headerContainerRef$g.height;
+
+  if (menuBlockHeight === windowHeight) {
+    headerContainerRef.removeAttribute('style');
+    menuBlockRef.removeAttribute('style');
+  } else {
+    menuBlockRef.style.height = "".concat(windowHeight, "px");
+    menuBlockRef.style.paddingTop = "60px";
+    headerContainerRef.style.height = "".concat(headerContainerHeight, "px");
+  }
+
   var expanded = menuBtnRef.getAttribute("aria-expanded") === "true" || false;
   menuBtnRef.setAttribute("aria-expanded", !expanded);
-  menuBtnRef.classList.toggle("is-open");
-  menuBlockRef.classList.toggle("is-open");
-  menuBlockRef.classList.toggle("is-close");
   bodyRef.classList.toggle("mobile-menu-open");
-  headerRef.classList.toggle("mobile-menu-open");
-  headerRef.classList.toggle("mobile-menu-close");
-});
+  bodyRef.classList.toggle("mobile-menu-close");
+  /* ----------------------------додаю бекдроп для блоку меню---------------------------- */
+
+  var menuBlockParentRef = menuBlockRef.parentNode;
+
+  if (menuBlockParentRef.classList.contains('container')) {
+    var wrapperRef = document.createElement("div");
+    wrapperRef.classList.add('wrapper');
+    wrapperRef.appendChild(menuBlockRef);
+    menuBlockParentRef.appendChild(wrapperRef);
+    setTimeout(function () {
+      return wrapperRef.classList.add('animate');
+    }, 250);
+    /* -----вішаю на обгортку умови закриття по кліку та натисканням ескейп---- */
+
+    wrapperRef.addEventListener('click', onWrapperClick);
+
+    function onWrapperClick(event) {
+      if (event.target === event.currentTarget) {
+        toggleWrapper();
+      }
+
+      ;
+    }
+
+    ;
+
+    function toggleWrapper() {
+      bodyRef.classList.toggle("mobile-menu-open");
+      bodyRef.classList.toggle("mobile-menu-close");
+      headerContainerRef.removeAttribute('style');
+      menuBlockRef.removeAttribute('style');
+      menuBlockParentRef.appendChild(menuBlockRef);
+      var wrapperRef = document.querySelector('.wrapper');
+      wrapperRef.remove();
+    }
+
+    ;
+  } else {
+    /* ----видаляю бекдроп для блоку меню---- */
+    var _wrapperRef = document.querySelector('.wrapper');
+
+    var menuBlockGrandPaRef = menuBlockParentRef.parentNode;
+    menuBlockGrandPaRef.appendChild(menuBlockRef);
+
+    _wrapperRef.remove();
+  }
+  /* ------------------кінець коду по бекдропу меню------------------------------ */
+
+};
+
+var resizeWindow = function resizeWindow() {
+  if (window.innerWidth >= 1200 && bodyRef.classList.contains("mobile-menu-open")) {
+    bodyRef.classList.toggle("mobile-menu-open");
+    bodyRef.classList.toggle("mobile-menu-close");
+    menuBlockRef.removeAttribute('style');
+    headerContainerRef.removeAttribute('style');
+    /* видаляю обгортку для меню блок, якщо вона є */
+
+    var menuBlockParentRef = menuBlockRef.parentNode;
+
+    if (menuBlockParentRef.classList.contains('wrapper')) {
+      var menuBlockGrandPaRef = menuBlockParentRef.parentNode;
+      menuBlockGrandPaRef.appendChild(menuBlockRef);
+      menuBlockParentRef.remove();
+    }
+    /* ------------------кінець коду по обгортці меню------------ */
+
+  }
+};
+
+menuBtnRef.addEventListener("click", blockMenuOpenClose);
+window.addEventListener('resize', resizeWindow);
 /* =========================================== */
 
 /* --------MODAL window open/close------------- */
@@ -380,7 +460,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "57564" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "61946" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

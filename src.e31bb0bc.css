@@ -11,8 +11,10 @@ body {
   background-color: #ffffff;
 }
 
-body.mobile-menu-open {
-  overflow: hidden;
+@media screen and (max-width: 767px) {
+  body.mobile-menu-open {
+    overflow: hidden;
+  }
 }
 
 * {
@@ -173,19 +175,6 @@ h6 {
   align-items: center;
   justify-content: center;
 }
-@media screen and (max-width: 1199px) {
-  .menu-block.is-open .buttons-with-icon {
-    margin-bottom: 15px;
-    margin-left: auto;
-    margin-right: auto;
-    width: 209px;
-  }
-}
-@media screen and (min-width: 1200px) {
-  .buttons-with-icon {
-    margin-left: 110px;
-  }
-}
 
 .buttons__icon {
   align-items: center;
@@ -208,7 +197,7 @@ h6 {
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
 .button-arrow:hover, .button-arrow:focus {
-  transform: scale(0.9);
+  transform: scale(1.1);
   background-color: #f2f2f2;
 }
 
@@ -218,7 +207,7 @@ h6 {
   fill: #d41443;
 }
 
-/* ---------LOGO------------ */
+/* ---------LOGO----------- */
 .logo {
   display: flex;
   justify-content: center;
@@ -234,7 +223,7 @@ h6 {
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
 .logo:hover, .logo:focus {
-  transform: scale(0.9);
+  transform: scale(1.1);
 }
 .logo:hover .logo__bg-img, .logo:focus .logo__bg-img {
   box-shadow: 0 2px 25px rgba(255, 0, 130, 0.5);
@@ -243,10 +232,6 @@ h6 {
 .logo:hover .logo__text, .logo:focus .logo__text {
   text-shadow: 0 2px 25px rgba(255, 0, 130, 0.5);
   color: #ffffff;
-}
-.header.mobile-menu-open .logo {
-  opacity: 0;
-  pointer-events: none;
 }
 
 .logo__bg-img {
@@ -277,22 +262,14 @@ h6 {
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-/* --------------------- */
+/* ---------^LOGO^------------ */
+/* ----------HEADER----------- */
 .header {
   position: absolute;
   z-index: 900;
   width: 100%;
   top: 0;
-  left: 0;
-}
-.header.mobile-menu-open {
-  padding-top: 6px;
-  background-color: #e17992;
-}
-@media screen and (min-width: 768px) and (max-width: 1199px) {
-  .header.mobile-menu-close .menu-button {
-    margin-right: 30px;
-  }
+  right: 0;
 }
 @media screen and (max-width: 767px) {
   .header {
@@ -305,7 +282,6 @@ h6 {
     padding-top: 37px;
   }
 }
-
 .header .container {
   display: flex;
   align-items: center;
@@ -327,55 +303,78 @@ h6 {
   }
 }
 
-/* ----------MENU----------- */
-@media screen and (max-width: 1199px) {
+/* ----------HEADER----------- */
+/* ----------MENU NAV div----------- */
+.menu-block {
+  display: flex;
+  /* -----------------MENU NAV div------------------ */
+  /* -----------------button BUY NOW------------------ */
+}
+@media screen and (max-width: 767px) {
   .menu-block {
+    position: absolute;
+    width: 100%;
+    top: 0;
+    right: 0;
+    flex-direction: column-reverse;
+    justify-content: flex-end;
     pointer-events: none;
     opacity: 0;
+  }
+}
+@media screen and (min-width: 768px) {
+  .menu-block {
+    justify-content: space-between;
   }
 }
 @media screen and (min-width: 1200px) {
   .menu-block {
-    display: flex;
-    justify-content: space-between;
     align-items: center;
   }
 }
-
-@media screen and (max-width: 1199px) {
-  .menu-block.is-open {
-    position: absolute;
-    width: 100%;
-    top: 99%;
+body.mobile-menu-open .menu-block {
+  pointer-events: auto;
+  opacity: 1;
+  background-color: #e17992;
+  transition-property: opacity;
+  transition-delay: 250ms;
+  transition-duration: 0ms;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
+@media screen and (min-width: 768px) and (max-width: 1199px) {
+  body.mobile-menu-open .menu-block {
+    position: fixed;
+    width: 254px;
+    top: 0;
     right: 0;
     display: flex;
     flex-direction: column-reverse;
     justify-content: flex-end;
-    pointer-events: auto;
-    opacity: 1;
-    background-color: #e17992;
   }
 }
-
-@media screen and (max-width: 767px) {
-  .menu-block.is-close {
-    position: absolute;
-    pointer-events: none;
-    opacity: 0;
+@media screen and (min-width: 1200px) {
+  .menu-block .buttons-with-icon {
+    margin-left: 110px;
   }
 }
-@media screen and (min-width: 768px) and (max-width: 1199px) {
-  .menu-block.is-close {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    pointer-events: auto;
-    opacity: 1;
-  }
-}
-
 @media screen and (max-width: 1199px) {
-  .menu-block.is-close .header__nav {
+  body.mobile-menu-open .menu-block .buttons-with-icon {
+    margin-bottom: 15px;
+    margin-left: auto;
+    margin-right: auto;
+    width: 186px;
+  }
+}
+@media screen and (max-width: 767px) {
+  body.mobile-menu-open .menu-block .buttons-with-icon {
+    width: 209px;
+  }
+}
+
+/* -----------------button BUY NOW------------------ */
+/* -----------NAVIGATION UL LIST------------------ */
+@media screen and (max-width: 1199px) {
+  body.mobile-menu-close .header__nav {
     transform: translateX(100%);
     pointer-events: none;
     visibility: hidden;
@@ -390,22 +389,18 @@ h6 {
     overflow: hidden;
     margin: -1px;
   }
-  .menu-block.is-open .header__nav {
+  body.mobile-menu-open .header__nav {
     transform: translateX(0);
-    transition-property: transform, opacity;
+    transition-property: transform;
     transition-delay: 250ms;
     transition-duration: 250ms;
     transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
   }
   .header__nav .item {
-    border-top: 1px solid #e18298;
-    border-bottom: 1px solid #e18298;
+    border-bottom: 2px solid #e18298;
   }
   .header__nav .item:first-child {
     border-top: 2px solid #e18298;
-  }
-  .header__nav .item:last-child {
-    border-bottom: 2px solid #e18298;
   }
 }
 @media screen and (min-width: 1200px) {
@@ -444,8 +439,14 @@ h6 {
   color: #d41443;
   transform: scale(0.9);
 }
+@media screen and (min-width: 1200px) {
+  .header__nav .link:hover, .header__nav .link:focus {
+    transform: scale(1.1);
+  }
+}
 
-/* -----------MENU BUTTON close/open------------------ */
+/* -----------NAVIGATION UL LIST------------------ */
+/* -----------MENU BUTTON close/open------------ */
 .menu-button {
   display: flex;
   justify-content: center;
@@ -457,6 +458,19 @@ h6 {
   border: none;
   background-color: transparent;
   cursor: pointer;
+}
+@media screen and (max-width: 1199px) {
+  body.mobile-menu-open .menu-button {
+    position: absolute;
+    z-index: 902;
+    top: 20px;
+    right: 20px;
+  }
+}
+@media screen and (min-width: 768px) and (max-width: 1199px) {
+  body.mobile-menu-close .menu-button {
+    margin-right: 30px;
+  }
 }
 @media screen and (min-width: 1200px) {
   .menu-button {
@@ -473,15 +487,6 @@ h6 {
     visibility: hidden;
   }
 }
-.menu-button .icon-close {
-  display: none;
-}
-.menu-button.is-open .icon-close {
-  display: block;
-}
-.menu-button.is-open .icon-open {
-  display: none;
-}
 
 .menu-button__icon {
   stroke: #d41443;
@@ -494,8 +499,36 @@ h6 {
   stroke: #ffffff;
   stroke-width: 2;
 }
+.menu-button__icon .icon-close {
+  display: none;
+}
+body.mobile-menu-open .menu-button__icon .icon-close {
+  display: block;
+}
+body.mobile-menu-open .menu-button__icon .icon-open {
+  display: none;
+}
 
-/* ----------------------------- */
+/* -----------MENU BUTTON close/open------------ */
+/* бекдроп для меню */
+.wrapper {
+  z-index: 901;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  transform: translateX(100%);
+  transition-property: transform;
+  transition-delay: 0ms;
+  transition-duration: 250ms;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.animate {
+  transform: translateX(0);
+}
+
 .section.hero {
   background-repeat: no-repeat;
   background-color: #ffb8ca;
@@ -607,7 +640,7 @@ h6 {
   color: #d41443;
   grid-column: 1;
   grid-row: 1;
-  animation: glow 2s ease-in-out infinite alternate;
+  animation: glow 750ms ease-in-out infinite alternate;
 }
 @media screen and (min-width: 768px) {
   .hero-label {
@@ -710,7 +743,6 @@ h6 {
   .list-locations {
     display: flex;
     flex-direction: column;
-    max-width: 50px;
     font-family: DM Sans;
     font-weight: 400;
     font-size: 8px;
@@ -754,7 +786,6 @@ h6 {
   .list-locations {
     font-size: 14px;
     line-height: 1.28;
-    max-width: 85px;
   }
   .list-locations .number {
     font-size: 46px;
@@ -1509,11 +1540,10 @@ h6 {
   color: #d41443;
 }
 
-.tradition__button:hover,
+/*.tradition__button:hover,
 .tradition__button:focus {
   background-color: #ecebeb;
-}
-
+} /* для моей кнопки*/
 .section.picture {
   text-align: center;
 }
@@ -1906,7 +1936,7 @@ h6 {
 /* модальне вікно */
 .backdrop {
   position: fixed;
-  z-index: 901;
+  z-index: 910;
   top: 0;
   left: 0;
   width: 100%;
