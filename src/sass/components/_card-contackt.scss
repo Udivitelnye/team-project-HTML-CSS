@@ -196,56 +196,26 @@
 /* -------кінець графік роботи------- */
 /* ---------кнопка така то---------- */
 
-.btn {
-  // align-items: center;
-  // justify-content: center;
-  margin: auto;
+.btn-list {
   list-style: none;
   padding: 0;
-
   @include media-size(min-tablet) {
     display: inline-flex;
   }
-
-  @include media-size(min-desktop) {
-  }
 }
-.card__button-left {
-  min-width: 176px;
-  min-height: 44px;
-  color: $primaryColor;
-  font-weight: 700;
-  font-size: 16px;
-  letter-spacing: 0.06em;
-  margin-bottom: 10px;
-  background-color: $accentColor;
-  border-radius: 22px;
-  border: 0 solid transparent;
-  cursor: pointer;
-
+.buttons-with-icon,
+.buttons-with-icon--red {
+  margin: auto;
+}
+.btn-list__item:not(:last-child) {
+  @include media-size(tablet-1) {
+    margin-bottom: 10px;
+  }
   @include media-size(min-tablet) {
     margin-right: 15px;
   }
-
-  @include media-size(min-desktop) {
-    margin-right: 15px;
-  }
 }
-
-.card__button-right {
-  min-width: 176px;
-  min-height: 44px;
-  color: $accentColor;
-  font-weight: 700;
-  font-size: 16px;
-  letter-spacing: 0.06em;
-  background-color: $primaryColor;
-  border-radius: 22px;
-  border: 0 solid transparent;
-  cursor: pointer;
-}
-
-.card__button-right:hover,
-.card__button-right:focus {
-  background-color: #ecebeb;
+.buttons-with-icon,
+.buttons-with-icon--red {
+  margin: auto;
 }
