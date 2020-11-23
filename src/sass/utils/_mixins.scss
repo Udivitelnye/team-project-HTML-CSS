@@ -43,10 +43,10 @@
   width: calc((100% - (#{$row_item} - 1) * #{$margin_width}) / #{$row_item});
 }
 
-@mixin itemWidthMargin($row_item, $margin_width: 15px) {
+@mixin itemWidthMargin($row_item, $margin_width: 30px) {
   /* $row_item - к-ть блоків в один ряд */
   /* $margin_width - ширина марджина між item */
-  width: calc((100% - (#{$row_item} * 2) * #{$margin_width}) / #{$row_item});
+  width: calc((100% - #{$row_item} * #{$margin_width}) / #{$row_item});
 }
 
 @mixin media-size($range) {
