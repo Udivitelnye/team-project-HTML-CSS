@@ -2,14 +2,14 @@
   padding-bottom: 165px;
   font-family: 'DM Sans', sans-serif;
   text-align: center;
-  background-image: linear-gradient($primaryColor 6%, #fff5f6 6%);
+  background-image: linear-gradient($primaryColor 6%, $traditionColor 6%);
 
   @include media-size(min-tablet) {
-    background-image: linear-gradient($primaryColor 9%, #fff5f6 9%);
+    background-image: linear-gradient($primaryColor 9%, $traditionColor 9%);
   }
 
   @include media-size(min-desktop) {
-    background-image: linear-gradient($primaryColor 12%, #fff5f6 12%);
+    background-image: linear-gradient($primaryColor 12%, $traditionColor 12%);
   }
 }
 
