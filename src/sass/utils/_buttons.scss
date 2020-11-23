@@ -37,6 +37,16 @@
   justify-content: center;
 }
 
+.buttons-with-icon--red {
+  @extend .buttons-with-icon;
+  background-color: $btnColor;
+  color: $primaryColor;
+  &:hover,
+  &:focus {
+    background-color: #c7133e;
+  }
+}
+
 .buttons__icon {
   align-items: center;
   stroke: currentColor;
