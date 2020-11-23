@@ -1,7 +1,3 @@
-// .container {
-//   // outline: 2px solid green;
-// }
-
 .section_product {
   padding-top: 120px;
   padding-bottom: 120px;
@@ -26,19 +22,27 @@
 .product_item {
   position: relative;
   padding-top: 161px;
-  padding-bottom: 41px;
+  padding-bottom: 111px;
+  padding-left: 41px;
+  padding-right: 39px;
   border-radius: 24px;
 
   @include media-size(min-tablet) {
     @include itemWidth(3, 20px);
     // flex-basis: calc(100% / 3 - 20px);
     padding-top: 152px;
+    padding-bottom: 120px;
+    padding-left: 15px;
+    padding-right: 15px;
   }
 
   @include media-size(min-desktop) {
     @include itemWidth(3);
     // flex-basis: calc(100% / 3 - 30px);
     padding-top: 163px;
+    padding-bottom: 152px;
+    padding-left: 44px;
+    padding-right: 45px;
   }
 }
 
@@ -57,14 +61,18 @@
   content: '';
   position: absolute;
   width: 100%;
-  transform: translateY(-109%);
+  transform: translate(-12%, -109%);
   display: block;
   background-size: contain;
   background-position: center;
   background-repeat: no-repeat;
 
   @include media-size(min-tablet) {
-    transform: translateY(-115%);
+    transform: translate(-6%, -115%);
+  }
+
+  @include media-size(min-desktop) {
+    transform: translate(-12%, -115%);
   }
 }
 
@@ -247,8 +255,8 @@
 
 .product_text {
   margin-bottom: 30px;
-  padding-left: 41px;
-  padding-right: 39px;
+  // padding-left: 41px;
+  // padding-right: 39px;
   font-family: DM Sans;
   font-style: normal;
   font-weight: bold;
@@ -259,15 +267,15 @@
   color: $primaryColor;
 
   @include media-size(min-tablet) {
-    padding-left: 11px;
-    padding-right: 11px;
+    // padding-left: 15px;
+    // padding-right: 15px;
     font-size: 14px;
     line-height: 1.8;
   }
 
   @include media-size(min-desktop) {
-    padding-left: 44px;
-    padding-right: 45px;
+    // padding-left: 44px;
+    // padding-right: 45px;
     font-size: 16px;
     line-height: 1.8;
   }
@@ -279,7 +287,11 @@
   margin-bottom: 30px;
 }
 
-.product_item .button-arrow {
-  margin-left: auto;
-  margin-right: auto;
+.button-arrow {
+  position: absolute;
+  bottom: 41px;
+  left: 50%;
+  transform: translateX(-25%);
+  // margin-left: auto;
+  // margin-right: auto;
 }
