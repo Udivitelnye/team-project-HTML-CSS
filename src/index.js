@@ -67,7 +67,7 @@ const blockMenuOpenClose = () => {
 
 
 const resizeWindow = () => {
-  if (window.innerWidth >= 1200 && bodyRef.classList.contains("mobile-menu-open")) {
+    if (window.innerWidth >= 1200 && bodyRef.classList.contains("mobile-menu-open")) {
     bodyRef.classList.toggle("mobile-menu-open");
     bodyRef.classList.toggle("mobile-menu-close");
     menuBlockRef.removeAttribute('style');
@@ -85,7 +85,23 @@ const resizeWindow = () => {
 }
 
 menuBtnRef.addEventListener("click", blockMenuOpenClose);
-window.addEventListener('resize', resizeWindow);
+window.addEventListener('resize', _.throttle(resizeWindow, 500));
+
+/* ------вішаю на лінки в меню умову закриття меню на мобілці------- */
+const menuLinkArray = document.querySelectorAll("[data-menu-block] .link");
+
+const blockMenuCloseByLink = () => {
+  if (window.innerWidth < 768 && bodyRef.classList.contains("mobile-menu-open")) {
+    blockMenuOpenClose();
+  }
+}
+
+const AddEvListToLink = (listOfLinks) => {
+  listOfLinks.forEach(link => link.addEventListener("click", blockMenuCloseByLink));
+}
+
+AddEvListToLink(menuLinkArray);
+
 /* =========================================== */
 
 /* --------MODAL window open/close------------- */
