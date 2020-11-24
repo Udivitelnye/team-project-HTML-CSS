@@ -1,7 +1,7 @@
 // Section Picture
 .gallery-picture {
   background-image: url(../img/gallery/gallery2x@mob1x.png);
-  width: 100%;
+  // width: 100%;
   height: 122px;
   margin-bottom: 80px;
 
@@ -270,4 +270,6 @@ li.slick-active button {
   border-radius: 0;
   background-position: center;
   background-size: 100%;
+
+  background-repeat: no-repeat;
 }
