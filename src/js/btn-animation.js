@@ -42,14 +42,14 @@ printNumbers(0, maxNumberFood, countFoodRef, 100);
 
 /* ----------------IntersectionObserver for Number counts------------------- */
 
-const statStatItemAray = document.querySelectorAll('[data-stat-item]');
+const statStatItemArray = document.querySelectorAll('[data-stat-item]');
 
 const options = {
   // rootMargin: "-100px",
   threshold: [0.5],
 };
 
-const ioCallback = (entries, observer) => {
+const statCallback = (entries, observer) => {
   entries.forEach(entry => {
     if (entry.isIntersecting) {
       const maxNumber = Number.parseInt(entry.target.textContent);
@@ -65,5 +65,22 @@ const ioCallback = (entries, observer) => {
   });
 };
 
-const intersecOb = new IntersectionObserver(ioCallback, options);
-statStatItemAray.forEach(item => intersecOb.observe(item));
+const intersecOb = new IntersectionObserver(statCallback, options);
+statStatItemArray.forEach(item => intersecOb.observe(item));
+
+/* -------------------для кнопок стрілок в секції продукти--------------- */
+const prodListRef = document.querySelector('.product_list');
+const btnArrowArray = prodListRef.querySelectorAll('.button-arrow');
+
+const btnArrowCallback = (entries, observer) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      console.dir(entry.target.style);
+      entry.target.style.transform = 'translateX(-50%)';
+      observer.unobserve(entry.target);
+    }
+  });
+};
+
+const ioBtnArrow = new IntersectionObserver(btnArrowCallback, options);
+btnArrowArray.forEach(item => ioBtnArrow.observe(item));

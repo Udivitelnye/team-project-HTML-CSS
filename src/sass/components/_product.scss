@@ -233,7 +233,8 @@
   position: absolute;
   bottom: 41px;
   left: 50%;
-  transform: translateX(-50%);
+  // transform: translateX(-50%);//без js
+  transform: translateX(-150%); //з js
 
   &:hover,
   &:focus {
