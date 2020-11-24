@@ -237,4 +237,10 @@
   bottom: 41px;
   left: 50%;
   transform: translateX(-50%);
+
+  &:hover,
+  &:focus {
+    transform: translateX(-50%) scale(1.1);
+    background-color: darken($primaryColor, 5%);
+  }
 }
