@@ -179,20 +179,23 @@
 }
 
 .gallery-list__text {
-  background-image: repeating-linear-gradient(
-    #e1e1e1 56px,
-    #e1e1e1 57px,
-    #fafafa 57px,
-    #fafafa 86px
-  );
-
-  @include media-size(min-tablet) {
-    background-image: repeating-linear-gradient(
+  background-image: url(../img/gallery/text.svg),
+    repeating-linear-gradient(
       #e1e1e1 56px,
       #e1e1e1 57px,
       #fafafa 57px,
-      #fafafa 85px
+      #fafafa 86px
     );
+  background-repeat: no-repeat;
+
+  @include media-size(min-tablet) {
+    background-image: url(../img/gallery/text.svg),
+      repeating-linear-gradient(
+        #e1e1e1 56px,
+        #e1e1e1 57px,
+        #fafafa 57px,
+        #fafafa 85px
+      );
   }
 }
 
