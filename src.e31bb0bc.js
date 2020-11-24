@@ -340,8 +340,8 @@ function onBackdropClick(event) {
 ;
 
 function toggleModal() {
-  refs.backdrop.classList.contains("is-hidden") ? window.addEventListener('keydown', onPressEscape) : window.removeEventListener('keydown', onPressEscape);
-  refs.backdrop.classList.toggle("is-hidden");
+  !refs.backdrop.classList.contains("is-open") ? window.addEventListener('keydown', onPressEscape) : window.removeEventListener('keydown', onPressEscape);
+  refs.backdrop.classList.toggle("is-open");
 }
 
 ;
@@ -432,6 +432,33 @@ var takeFormData = function takeFormData(event) {
 
   var formRef = event.target; // тут міститься посилання на форму
 
+  /* -------------- */
+
+  var formInputArray = formRef.querySelectorAll('input');
+  var checked = true;
+  formInputArray.forEach(function (input) {
+    if (!input.hasAttribute('checked')) {
+      input.style.borderColor = '#d41443';
+
+      if (input.getAttribute('type') === 'checkbox') {
+        var _checkboxIconRef = formRef.querySelector('.checkbox-icon');
+
+        _checkboxIconRef.classList.add('border-not-checked');
+      }
+
+      ;
+      checked = false;
+    }
+  });
+
+  if (!checked) {
+    console.log('not all inputs checked');
+    return;
+  }
+
+  ;
+  /* -------------- */
+
   var formData = new FormData(formRef); //створюємо новий об'єкт
 
   var submittedData = {}; //об'єкт для збору даних з форми, який надішлеться на бекенд
@@ -440,7 +467,22 @@ var takeFormData = function takeFormData(event) {
     //цей об'єкт просто має ф-цію форіч і дані інпутів у вигляді value та key = name інпута
     submittedData[key] = value; //записуємо дані в об'єкт
   });
-  console.dir(submittedData);
+  console.dir(submittedData); //показує в консолі обєкт з даними
+
+  toggleModal(); // закриває форму
+
+  formInputArray.forEach(function (input) {
+    input.value = '';
+    input.removeAttribute('checked');
+  });
+  /* --------видаляю все з чекбокса----------- */
+
+  checkboxIconRef.classList.remove('border-not-checked');
+  checkboxInputRef.removeAttribute('checked');
+  checkboxIconRef.classList.remove('checked');
+  window.removeEventListener('keydown', onPressEnterRemove);
+  addEventListenerAddChecked();
+  /* --------кінець видаляю все з чекбокса----------- */
 };
 
 if (formModalRef) {
@@ -449,6 +491,39 @@ if (formModalRef) {
 
 ;
 /* --------------------- */
+
+/* ---------перевірка заповнення INPUT в модалці------------ */
+
+var modalInputArray = document.querySelectorAll('[data-form-modal] input');
+
+var checkedInput = function checkedInput(event) {
+  var pattern;
+
+  if (event.target.name === "name") {
+    pattern = /^[a-zA-ZА-Яа-яЁё\s]+$/;
+  }
+
+  if (event.target.name === "tel") {
+    pattern = /^[0-9]{9,12}(\s*)?$/;
+  }
+
+  if (event.target.name === "email") {
+    pattern = /^([a-z0-9_\.-])+@[a-z0-9-]+\.([a-z]{2,4}\.)?[a-z]{2,4}$/;
+  }
+
+  if (!pattern.test(event.target.value)) {
+    event.target.style.outlineColor = '#d41443';
+    event.target.removeAttribute('checked');
+  } else {
+    event.target.style.outlineColor = 'inherit';
+    event.target.style.borderColor = 'rgba(33, 33, 33, 0.2)';
+    event.target.setAttribute('checked', '');
+  }
+};
+
+modalInputArray.forEach(function (input) {
+  return input.addEventListener('input', _.debounce(checkedInput, 500));
+});
 },{"./sass/main.scss":"sass/main.scss"}],"../node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
@@ -477,7 +552,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "50477" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "62648" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
