@@ -13,7 +13,8 @@
   padding-right: 15px;
   padding-bottom: 93px;
 
-  opacity: 1;
+  opacity: 0;
+  pointer-events: none;
   @include transition(opacity);
 
   @include media-size(min-desktop) {
@@ -24,13 +25,13 @@
   }
 }
 
-.backdrop.is-hidden {
-  pointer-events: none;
-  opacity: 0;
+.backdrop.is-open {
+  pointer-events: auto;
+  opacity: 1;
   @include transition(opacity, 250ms);
 
   .modal {
-    transform: scale(0);
+    transform: scale(1);
   }
 }
 
@@ -45,7 +46,7 @@
   box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.12), 0px 1px 1px rgba(0, 0, 0, 0.14),
     0px 2px 1px rgba(0, 0, 0, 0.2);
 
-  transform: scale(1);
+  transform: scale(0);
   @include transition(transform, 250ms);
 
   & .section-title {
@@ -97,6 +98,7 @@
   padding-right: 12px;
   border: 1px solid rgba(33, 33, 33, 0.2);
   border-radius: 20px;
+  color: $thirdColor;
   @include transition(border);
 }
 
@@ -114,7 +116,7 @@
 
   .form-input:focus + &,
   .form-input:hover + & {
-    fill: $accentColor;
+    fill: $thirdColor;
   }
 }
 
@@ -159,7 +161,8 @@
   background-color: white;
   fill: $primaryColor;
   border-radius: 2px;
-  border: 2px solid $primaryColor;
+  // border: 2px solid $primaryColor;
+  border: 2px solid rgba(33, 33, 33, 0.2);
   @include transitionTwoProp(border, background-color);
 
   .form-checkbox:hover & {
@@ -171,6 +174,10 @@
     border: 0px solid $accentColor;
     background: $accentColor;
   }
+}
+
+.border-not-checked {
+  border: 2px solid #d41443;
 }
 
 .form__text-checkbox {
