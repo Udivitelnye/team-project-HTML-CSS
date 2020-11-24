@@ -23,6 +23,7 @@ body {
 
 a {
   color: inherit;
+  text-decoration: none;
 }
 
 img {
@@ -140,7 +141,7 @@ h6 {
 }
 
 /* --------Global BUTTONS------------- */
-.buttons, .buttons-with-icon, .buttons-with-icon--red {
+.buttons, .buttons-with-icon {
   flex-shrink: 0;
   display: inline-block;
   padding-top: 15px;
@@ -163,34 +164,37 @@ h6 {
   transition-duration: 250ms;
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
-.buttons:hover, .buttons-with-icon:hover, .buttons-with-icon--red:hover, .buttons:focus, .buttons-with-icon:focus, .buttons-with-icon--red:focus {
+.buttons:hover, .buttons-with-icon:hover, .buttons:focus, .buttons-with-icon:focus {
   transform: scale(1.1);
   background-color: #f2f2f2;
   box-shadow: 0 2px 25px rgba(255, 0, 130, 0.2);
 }
 
-/* --------Button in header------------- */
-.buttons-with-icon, .buttons-with-icon--red {
+/* --------Button red------------- */
+.btn-red {
+  background-color: #d41342;
+  color: #ffffff;
+}
+.btn-red:hover, .btn-red:focus {
+  background-color: #c7133e;
+}
+
+/* --------Button with icon-svg------------- */
+.buttons-with-icon {
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
-.buttons-with-icon--red {
-  background-color: #d41342;
-  color: #ffffff;
-}
-.buttons-with-icon--red:hover, .buttons-with-icon--red:focus {
-  background-color: #c7133e;
-}
-
+/* -------svg у звичайній кнопці----------- */
 .buttons__icon {
   align-items: center;
   stroke: currentColor;
   margin-left: 10px;
 }
 
-/* --------------------- */
+/* ------------------кінець звичайних кнопок---------------- */
+/* --------кругла кнопка зі стрілкою svg-------- */
 .button-arrow {
   display: flex;
   justify-content: center;
@@ -209,6 +213,7 @@ h6 {
   background-color: #f2f2f2;
 }
 
+/* -------svg у круглій кнопці----------- */
 .button-arrow__icon {
   width: 20px;
   height: 20px;
@@ -361,12 +366,12 @@ body.mobile-menu-open .menu-block {
   }
 }
 @media screen and (min-width: 1200px) {
-  .menu-block .buttons-with-icon, .menu-block .buttons-with-icon--red {
+  .menu-block .buttons-with-icon {
     margin-left: 110px;
   }
 }
 @media screen and (max-width: 1199px) {
-  body.mobile-menu-open .menu-block .buttons-with-icon, body.mobile-menu-open .menu-block .buttons-with-icon--red {
+  body.mobile-menu-open .menu-block .buttons-with-icon {
     margin-bottom: 15px;
     margin-left: auto;
     margin-right: auto;
@@ -374,7 +379,7 @@ body.mobile-menu-open .menu-block {
   }
 }
 @media screen and (max-width: 767px) {
-  body.mobile-menu-open .menu-block .buttons-with-icon, body.mobile-menu-open .menu-block .buttons-with-icon--red {
+  body.mobile-menu-open .menu-block .buttons-with-icon {
     width: 209px;
   }
 }
@@ -469,7 +474,7 @@ body.mobile-menu-open .menu-block {
 }
 @media screen and (max-width: 1199px) {
   body.mobile-menu-open .menu-button {
-    position: absolute;
+    position: fixed;
     z-index: 902;
     top: 20px;
     right: 20px;
@@ -610,13 +615,33 @@ body.mobile-menu-open .menu-button__icon .icon-open {
 }
 @media screen and (min-width: 768px) {
   .hero-main {
-    max-width: 170px;
+    max-width: 180px;
   }
 }
 @media screen and (min-width: 1200px) {
   .hero-main {
     max-width: 277px;
   }
+}
+.hero-main .buttons, .hero-main .buttons-with-icon {
+  padding: 9px 14px;
+  font-weight: 400;
+  font-size: 8px;
+  line-height: 1.25;
+  letter-spacing: 0.04em;
+}
+@media screen and (min-width: 1200px) {
+  .hero-main .buttons, .hero-main .buttons-with-icon {
+    font-size: 14px;
+    line-height: 1.28;
+    padding-top: 13px;
+    padding-bottom: 13px;
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+}
+.hero-main .buttons:not(:last-child), .hero-main .buttons-with-icon:not(:last-child) {
+  margin-right: 8px;
 }
 
 .hero-title {
@@ -639,7 +664,7 @@ body.mobile-menu-open .menu-button__icon .icon-open {
 }
 @media screen and (min-width: 768px) {
   .hero-title {
-    font-size: 22px;
+    font-size: 24px;
     line-height: 1.13;
   }
 }
@@ -660,7 +685,7 @@ body.mobile-menu-open .menu-button__icon .icon-open {
 }
 @media screen and (min-width: 768px) {
   .hero-label {
-    font-size: 34px;
+    font-size: 38px;
     line-height: 0.91;
   }
 }
@@ -668,49 +693,6 @@ body.mobile-menu-open .menu-button__icon .icon-open {
   .hero-label {
     font-size: 58px;
   }
-}
-
-.btn-hero {
-  padding: 9px 16px;
-  border: none;
-  cursor: pointer;
-  border-radius: 20px;
-  font-family: DM Sans;
-  font-size: 8px;
-  line-height: 1.25;
-  transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1), background-color 250ms cubic-bezier(0.4, 0, 0.2, 1), transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
-}
-.btn-hero:hover, .btn-hero:focus {
-  transform: scale(1.1);
-  box-shadow: 0 2px 25px rgba(255, 0, 130, 0.5);
-}
-@media screen and (min-width: 1200px) {
-  .btn-hero {
-    font-size: 14px;
-    line-height: 1.28;
-  }
-}
-
-.btn-hero.btn-one {
-  margin-right: 8px;
-  color: #ffffff;
-  background: #d41443;
-}
-.btn-hero.btn-one:hover, .btn-hero.btn-one:focus {
-  background: #c7133e;
-}
-@media screen and (min-width: 1200px) {
-  .btn-hero.btn-one {
-    margin-right: 15px;
-  }
-}
-
-.btn-hero.btn-two {
-  color: #d41443;
-  background: #ffffff;
-}
-.btn-hero.btn-two:hover, .btn-hero.btn-two:focus {
-  background: #ecebeb;
 }
 
 .hero-about {
@@ -828,14 +810,25 @@ body.mobile-menu-open .menu-button__icon .icon-open {
   }
 }
 
-.icon-arrow {
-  width: 10px;
-  height: 10px;
+.hero .button-arrow {
+  width: 18px;
+  height: 18px;
 }
 @media screen and (min-width: 1200px) {
-  .icon-arrow {
-    width: 15px;
-    height: 15px;
+  .hero .button-arrow {
+    width: 26px;
+    height: 26px;
+  }
+}
+
+.hero .button-arrow__icon {
+  width: 6px;
+  height: 6px;
+}
+@media screen and (min-width: 1200px) {
+  .hero .button-arrow__icon {
+    width: 8px;
+    height: 8px;
   }
 }
 
@@ -1076,11 +1069,15 @@ body.mobile-menu-open .menu-button__icon .icon-open {
   margin-bottom: 30px;
 }
 
-.button-arrow {
+.section_product .button-arrow {
   position: absolute;
   bottom: 41px;
   left: 50%;
   transform: translateX(-50%);
+}
+.section_product .button-arrow:hover, .section_product .button-arrow:focus {
+  transform: translateX(-50%) scale(1.1);
+  background-color: #f2f2f2;
 }
 
 @media screen and (max-width: 767px) {
@@ -2302,12 +2299,6 @@ li.slick-active button {
   transition-duration: 250ms;
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
-.form-input:focus {
-  outline-color: getColor("accent");
-}
-.form-input:hover {
-  border-color: getColor("accent");
-}
 
 .form-icon {
   position: absolute;
@@ -2340,12 +2331,6 @@ li.slick-active button {
   transition-delay: 0ms;
   transition-duration: 250ms;
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-}
-.form-textarea:focus {
-  outline-color: getColor("accent");
-}
-.form-textarea:hover {
-  border: 1px solid getColor("accent");
 }
 .form-textarea::placeholder {
   font-size: 12px;

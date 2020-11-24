@@ -293,7 +293,24 @@ var resizeWindow = function resizeWindow() {
 };
 
 menuBtnRef.addEventListener("click", blockMenuOpenClose);
-window.addEventListener('resize', resizeWindow);
+window.addEventListener('resize', _.throttle(resizeWindow, 500));
+/* ------вішаю на лінки в меню умову закриття меню на мобілці------- */
+
+var menuLinkArray = document.querySelectorAll("[data-menu-block] .link");
+
+var blockMenuCloseByLink = function blockMenuCloseByLink() {
+  if (window.innerWidth < 768 && bodyRef.classList.contains("mobile-menu-open")) {
+    blockMenuOpenClose();
+  }
+};
+
+var AddEvListToLink = function AddEvListToLink(listOfLinks) {
+  listOfLinks.forEach(function (link) {
+    return link.addEventListener("click", blockMenuCloseByLink);
+  });
+};
+
+AddEvListToLink(menuLinkArray);
 /* =========================================== */
 
 /* --------MODAL window open/close------------- */
@@ -460,7 +477,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "61973" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "50477" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
