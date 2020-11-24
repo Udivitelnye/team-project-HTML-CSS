@@ -573,7 +573,7 @@ body.mobile-menu-open .menu-button__icon .icon-open {
   .container-hero {
     background-image: url(/icecream236@1x.e272e671.png), url(/tasty293@1x.12f7a02d.png), url(/milk188@1x.74ec2478.png), url(/elipse.86e3cf9b.svg);
     background-position: bottom 0 right 400px, bottom 0 right 60px, left 60px bottom 45px, bottom 75px right 207px;
-    background-size: 236px 557px, 239px 232px, 188px 191px, 538px 538px;
+    background-size: 236px 557px, 293px 232px, 188px 191px, 538px 538px;
   }
 }
 @media screen and (min-width: 1200px) and (min-device-pixel-ratio: 2), screen and (min-width: 1200px) and (min-resolution: 192dpi), screen and (min-width: 1200px) and (min-resolution: 2dppx) {
@@ -843,21 +843,24 @@ body.mobile-menu-open .menu-button__icon .icon-open {
   padding-top: 120px;
   padding-bottom: 120px;
 }
-
-.product_list {
-  padding-top: 80px;
-  padding-left: 0;
+.section_product .title {
+  margin-bottom: 147px;
 }
+@media screen and (min-width: 768px) {
+  .section_product .title {
+    margin-bottom: 158px;
+  }
+}
+@media screen and (min-width: 1200px) {
+  .section_product .title {
+    margin-bottom: 269px;
+  }
+}
+
 @media screen and (min-width: 768px) {
   .product_list {
     display: flex;
     justify-content: space-between;
-    padding-top: 95px;
-  }
-}
-@media screen and (min-width: 1200px) {
-  .product_list {
-    padding-top: 200px;
   }
 }
 
@@ -906,20 +909,15 @@ body.mobile-menu-open .menu-button__icon .icon-open {
   content: "";
   position: absolute;
   width: 100%;
-  transform: translate(-12%, -109%);
-  display: block;
+  left: 0;
+  bottom: 74%;
   background-size: contain;
   background-position: center;
   background-repeat: no-repeat;
 }
 @media screen and (min-width: 768px) {
   .product_item.milkshake::before, .product_item.icecoffee::before, .product_item.icecream::before {
-    transform: translate(-6%, -115%);
-  }
-}
-@media screen and (min-width: 1200px) {
-  .product_item.milkshake::before, .product_item.icecoffee::before, .product_item.icecream::before {
-    transform: translate(-12%, -115%);
+    bottom: 80%;
   }
 }
 
@@ -1008,9 +1006,6 @@ body.mobile-menu-open .menu-button__icon .icon-open {
   .product_item.milkshake::before {
     height: 224px;
     background-image: url(/milkshake.ddf0c6be.png);
-    background-size: contain;
-    background-position: top center;
-    background-repeat: no-repeat;
   }
 }
 @media screen and (min-width: 768px) and (min-device-pixel-ratio: 2), screen and (min-width: 768px) and (min-resolution: 192dpi), screen and (min-width: 768px) and (min-resolution: 2dppx) {
@@ -1493,20 +1488,6 @@ body.mobile-menu-open .menu-button__icon .icon-open {
 .tradition__button:focus {
   background-color: #ecebeb;
 } /* для моей кнопки*/
-.section.gallery {
-  background-image: linear-gradient(#fff5f6 6%, #ffffff 0%);
-}
-@media screen and (min-width: 768px) {
-  .section.gallery {
-    background-image: linear-gradient(#fff5f6 12%, #ffffff 0%);
-  }
-}
-@media screen and (min-width: 1200px) {
-  .section.gallery {
-    background-image: linear-gradient(#fff5f6 17%, #ffffff 0%);
-  }
-}
-
 .gallery-picture {
   background-image: url(/gallery2x@mob1x.fee9d289.png);
   width: 100%;
@@ -1548,9 +1529,18 @@ body.mobile-menu-open .menu-button__icon .icon-open {
 
 .section.gallery {
   padding-bottom: 80px;
-  padding-left: 15px;
-  padding-right: 15px;
   color: #000000;
+  background-image: linear-gradient(#fff5f6 6%, #ffffff 0%);
+}
+@media screen and (min-width: 768px) {
+  .section.gallery {
+    background-image: linear-gradient(#fff5f6 12%, #ffffff 0%);
+  }
+}
+@media screen and (min-width: 1200px) {
+  .section.gallery {
+    background-image: linear-gradient(#fff5f6 17%, #ffffff 0%);
+  }
 }
 
 .gallery-title {
@@ -1623,8 +1613,10 @@ body.mobile-menu-open .menu-button__icon .icon-open {
 }
 
 .gallery-list__wrap {
-  z-index: 10;
-  padding: 43px 66px 26px 57px;
+  padding-top: 54px;
+  padding-left: 50px;
+  padding-right: 50px;
+  padding-bottom: 20px;
   margin-bottom: 30px;
   font-weight: 500;
   font-size: 12px;
@@ -1635,7 +1627,10 @@ body.mobile-menu-open .menu-button__icon .icon-open {
 @media screen and (min-width: 768px) {
   .gallery-list__wrap {
     margin-bottom: 24px;
-    padding: 47px 80px 34px 80px;
+    padding-top: 56px;
+    padding-left: 80px;
+    padding-right: 80px;
+    padding-bottom: 34px;
     font-size: 14px;
     line-height: 2.14;
     letter-spacing: 0.04em;
@@ -1644,41 +1639,20 @@ body.mobile-menu-open .menu-button__icon .icon-open {
 @media screen and (min-width: 1200px) {
   .gallery-list__wrap {
     margin-bottom: 15px;
-    padding: 47px 89px 39px 87px;
+    padding-left: 100px;
+    padding-right: 100px;
     font-size: 16px;
     line-height: 1.87;
   }
 }
-.gallery-list__wrap::before {
-  content: " ";
-  position: absolute;
-  width: 100%;
-  height: 40px;
-  top: 28px;
-  left: 61px;
-  background-image: url(/text.fe197b06.svg);
-  background-repeat: no-repeat;
-  z-index: -1;
-}
-@media screen and (min-width: 768px) {
-  .gallery-list__wrap::before {
-    top: 30px;
-    left: 46px;
-  }
-}
-@media screen and (min-width: 1200px) {
-  .gallery-list__wrap::before {
-    top: 32px;
-    left: 54px;
-  }
-}
 
 .gallery-list__text {
-  background-image: repeating-linear-gradient(#e1e1e1 56px, #e1e1e1 57px, #fafafa 57px, #fafafa 86px);
+  background-image: url(/text.fe197b06.svg), repeating-linear-gradient(#e1e1e1 56px, #e1e1e1 57px, #fafafa 57px, #fafafa 86px);
+  background-repeat: no-repeat;
 }
 @media screen and (min-width: 768px) {
   .gallery-list__text {
-    background-image: repeating-linear-gradient(#e1e1e1 56px, #e1e1e1 57px, #fafafa 57px, #fafafa 85px);
+    background-image: url(/text.fe197b06.svg), repeating-linear-gradient(#e1e1e1 56px, #e1e1e1 57px, #fafafa 57px, #fafafa 85px);
   }
 }
 
