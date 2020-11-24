@@ -28,17 +28,9 @@
     box-shadow: 0 2px 25px rgba(255, 0, 130, 0.2);
   }
 }
-
-/* --------Button in header------------- */
-.buttons-with-icon {
-  @extend .buttons;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.buttons-with-icon--red {
-  @extend .buttons-with-icon;
+/* --------Button red------------- */
+.btn-red {
+  // @extend .buttons;
   background-color: $btnColor;
   color: $primaryColor;
   &:hover,
@@ -46,14 +38,23 @@
     background-color: #c7133e;
   }
 }
+/* --------Button with icon-svg------------- */
+.buttons-with-icon {
+  @extend .buttons;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 
+/* -------svg у звичайній кнопці----------- */
 .buttons__icon {
   align-items: center;
   stroke: currentColor;
   margin-left: 10px;
 }
-/* --------------------- */
+/* ------------------кінець звичайних кнопок---------------- */
 
+/* --------кругла кнопка зі стрілкою svg-------- */
 .button-arrow {
   display: flex;
   justify-content: center;
@@ -71,6 +72,7 @@
   }
 }
 
+/* -------svg у круглій кнопці----------- */
 .button-arrow__icon {
   width: 20px;
   height: 20px;
