@@ -3,23 +3,20 @@
   padding-bottom: 120px;
 
   .title {
-    margin-bottom: 147px;
-    @include media-size(min-tablet) {
-      margin-bottom: 158px;
-    }
-    @include media-size(min-desktop) {
-      margin-bottom: 269px;
-    }
+    margin-bottom: 60px;
   }
 }
 
 .product_list {
-  // padding-top: 80px;
+  padding-top: 85px;
 
   @include media-size(min-tablet) {
     display: flex;
     justify-content: space-between;
-    // padding-top: 95px;
+    padding-top: 110px;
+  }
+  @include media-size(min-desktop) {
+    padding-top: 210px;
   }
 }
 
