@@ -1,42 +1,52 @@
 // Section Picture
-.gallery-picture {
-  background-image: url(../img/gallery/gallery2x@mob1x.png);
-  // width: 100%;
-  height: 122px;
+// .gallery-picture {
+//   background-image: url(../img/gallery/gallery2x@mob1x.png);
+//   // width: 100%;
+//   height: 122px;
+//   margin-bottom: 80px;
+
+//   background-position: center;
+//   background-repeat: no-repeat;
+//   background-size: contain;
+
+//   @media screen and (min-device-pixel-ratio: 2),
+//     screen and (min-resolution: 192dpi),
+//     screen and (min-resolution: 2dppx) {
+//     background-image: url(../img/gallery/gallery2x@mob2x.png);
+//   }
+
+//   @include media-size(min-tablet) {
+//     background-image: url(../img/gallery/gallery2x@tablet1x.png);
+//     margin-bottom: 121px;
+//     height: 264px;
+
+//     @media screen and (min-device-pixel-ratio: 2),
+//       screen and (min-resolution: 192dpi),
+//       screen and (min-resolution: 2dppx) {
+//       background-image: url(../img/gallery/gallery2x@tablet2x.png);
+//     }
+//   }
+
+//   @include media-size(min-desktop) {
+//     background-image: url(../img/gallery/gallery1xdesktop.png);
+//     margin-bottom: 123px;
+//     height: 430px;
+
+//     @media screen and (min-device-pixel-ratio: 2),
+//       screen and (min-resolution: 192dpi),
+//       screen and (min-resolution: 2dppx) {
+//       background-image: url(../img/gallery/gallery2xdesktop.png);
+//     }
+//   }
+// }
+
+.gallery-image {
+  transform: translateX(-150%);
+  transform: scale(0);
   margin-bottom: 80px;
-
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: contain;
-
-  @media screen and (min-device-pixel-ratio: 2),
-    screen and (min-resolution: 192dpi),
-    screen and (min-resolution: 2dppx) {
-    background-image: url(../img/gallery/gallery2x@mob2x.png);
-  }
-
+  @include transition(transform, 0ms, 1000ms);
   @include media-size(min-tablet) {
-    background-image: url(../img/gallery/gallery2x@tablet1x.png);
-    margin-bottom: 121px;
-    height: 264px;
-
-    @media screen and (min-device-pixel-ratio: 2),
-      screen and (min-resolution: 192dpi),
-      screen and (min-resolution: 2dppx) {
-      background-image: url(../img/gallery/gallery2x@tablet2x.png);
-    }
-  }
-
-  @include media-size(min-desktop) {
-    background-image: url(../img/gallery/gallery1xdesktop.png);
-    margin-bottom: 123px;
-    height: 430px;
-
-    @media screen and (min-device-pixel-ratio: 2),
-      screen and (min-resolution: 192dpi),
-      screen and (min-resolution: 2dppx) {
-      background-image: url(../img/gallery/gallery2xdesktop.png);
-    }
+    margin-bottom: 120px;
   }
 }
 
@@ -47,11 +57,13 @@
   background-image: linear-gradient($traditionColor 6%, $primaryColor 0%);
 
   @include media-size(min-tablet) {
-    background-image: linear-gradient($traditionColor 12%, $primaryColor 0%);
+    // background-image: linear-gradient($traditionColor 12%, $primaryColor 0%);
+    background-image: linear-gradient($traditionColor 15%, $primaryColor 0%);
   }
 
   @include media-size(min-desktop) {
-    background-image: linear-gradient($traditionColor 17%, $primaryColor 0%);
+    // background-image: linear-gradient($traditionColor 17%, $primaryColor 0%);
+    background-image: linear-gradient($traditionColor 19%, $primaryColor 0%);
   }
 }
 
