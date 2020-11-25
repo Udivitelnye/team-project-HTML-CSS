@@ -273,6 +273,8 @@ var blockMenuOpenClose = function blockMenuOpenClose() {
 };
 
 var resizeWindow = function resizeWindow() {
+  console.log('resize');
+
   if (window.innerWidth >= 1200 && bodyRef.classList.contains("mobile-menu-open")) {
     bodyRef.classList.toggle("mobile-menu-open");
     bodyRef.classList.toggle("mobile-menu-close");
@@ -524,6 +526,23 @@ var checkedInput = function checkedInput(event) {
 modalInputArray.forEach(function (input) {
   return input.addEventListener('input', _.debounce(checkedInput, 500));
 });
+/* -----------плавний скролінг------------- */
+
+var anchorsArray = document.querySelectorAll('a[href*="#"]');
+
+var rewindTo = function rewindTo(event) {
+  event.preventDefault();
+  var nameID = event.target.getAttribute('href');
+  var nameIDRef = document.querySelector(nameID);
+  nameIDRef.scrollIntoView({
+    behavior: 'smooth',
+    block: 'start'
+  });
+};
+
+anchorsArray.forEach(function (anchor) {
+  anchor.addEventListener('click', rewindTo);
+});
 },{"./sass/main.scss":"sass/main.scss"}],"../node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
@@ -552,7 +571,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "61255" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "58858" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

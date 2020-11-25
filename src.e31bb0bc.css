@@ -1084,7 +1084,6 @@ body.mobile-menu-open .menu-button__icon .icon-open {
 @media screen and (min-width: 768px) {
   .product_list {
     display: flex;
-    justify-content: space-between;
     padding-top: 110px;
   }
 }
@@ -1098,8 +1097,8 @@ body.mobile-menu-open .menu-button__icon .icon-open {
   position: relative;
   padding-top: 161px;
   padding-bottom: 111px;
-  padding-left: 41px;
-  padding-right: 39px;
+  padding-left: 40px;
+  padding-right: 40px;
   border-radius: 24px;
 }
 @media screen and (min-width: 768px) {
@@ -1107,6 +1106,7 @@ body.mobile-menu-open .menu-button__icon .icon-open {
     /* $row_item - к-ть блоків в один ряд */
     /* $margin_width - ширина марджина між item */
     width: calc((100% - (3 - 1) * 20px) / 3);
+    margin-left: 20px;
     padding-top: 152px;
     padding-bottom: 120px;
     padding-left: 15px;
@@ -1118,10 +1118,11 @@ body.mobile-menu-open .menu-button__icon .icon-open {
     /* $row_item - к-ть блоків в один ряд */
     /* $margin_width - ширина марджина між item */
     width: calc((100% - (3 - 1) * 30px) / 3);
+    margin-left: 30px;
     padding-top: 163px;
     padding-bottom: 152px;
     padding-left: 44px;
-    padding-right: 45px;
+    padding-right: 44px;
   }
 }
 
@@ -1934,12 +1935,16 @@ body.mobile-menu-open .menu-button__icon .icon-open {
 li.slick-active button {
   background: transparent;
   background-image: url(/home-1.d89bc79c.svg);
-  background-position: top 0;
+  background-position: top;
   border: none;
   border-radius: 0;
   background-position: center;
   background-size: 100%;
   background-repeat: no-repeat;
+}
+
+.slick-list.dragging {
+  cursor: pointer;
 }
 
 .card-contackt {
