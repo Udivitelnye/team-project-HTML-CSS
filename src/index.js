@@ -67,6 +67,7 @@ const blockMenuOpenClose = () => {
 
 
 const resizeWindow = () => {
+   console.log('resize');
     if (window.innerWidth >= 1200 && bodyRef.classList.contains("mobile-menu-open")) {
     bodyRef.classList.toggle("mobile-menu-open");
     bodyRef.classList.toggle("mobile-menu-close");
@@ -79,6 +80,7 @@ const resizeWindow = () => {
       const menuBlockGrandPaRef = menuBlockParentRef.parentNode;
       menuBlockGrandPaRef.appendChild(menuBlockRef);
       menuBlockParentRef.remove();
+
     }
     /* ------------------кінець коду по обгортці меню------------ */
   }
@@ -275,5 +277,23 @@ const checkedInput = (event) => {
 };
 
 modalInputArray.forEach(input => input.addEventListener('input', _.debounce(checkedInput, 500)));
+
+
+/* -----------плавний скролінг------------- */
+const anchorsArray = document.querySelectorAll('a[href*="#"]')
+
+const rewindTo = (event) => {
+  event.preventDefault();
+  const nameID = event.target.getAttribute('href');
+  const nameIDRef = document.querySelector(nameID);
+  nameIDRef.scrollIntoView({
+      behavior: 'smooth',
+      block: 'start'
+    })
+};
+
+anchorsArray.forEach(anchor => {
+  anchor.addEventListener('click', rewindTo);
+})
 
 

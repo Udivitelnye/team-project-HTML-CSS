@@ -176,16 +176,15 @@
   //   left: 61px;
   //   background-image: url(../img/gallery/text.svg);
   //   background-repeat: no-repeat;
-  //   z-index: -1;
 
   //   @include media-size(min-tablet) {
   //     top: 130px;
-  //     left: 46px;
+  //     left: 750px;
   //   }
 
   //   @include media-size(min-desktop) {
   //     top: 132px;
-  //     left: 54px;
+  //     left: 750px;
   //   }
   // }
 }
@@ -277,11 +276,15 @@
 li.slick-active button {
   background: transparent;
   background-image: url(../img/gallery/home-1.svg);
-  background-position: top 0;
+  background-position: top;
   border: none;
   border-radius: 0;
   background-position: center;
   background-size: 100%;
 
   background-repeat: no-repeat;
+}
+
+.slick-list.dragging {
+  cursor: pointer;
 }
