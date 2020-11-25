@@ -216,7 +216,6 @@ btnArrowArray.forEach(function (item) {
 /* -------------------для картинки галереї--------------- */
 
 var imgGalleryRef = document.querySelector('[data-gallery]');
-console.log(imgGalleryRef);
 
 var imgGalleryCallback = function imgGalleryCallback(entries, observer) {
   entries.forEach(function (entry) {
@@ -257,7 +256,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "56336" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "61255" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
