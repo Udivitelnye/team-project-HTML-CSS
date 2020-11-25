@@ -142,10 +142,11 @@ var maxNumberCafe = Number(countCafeRef.textContent);
 var maxNumberFood = Number(countFoodRef.textContent);
 
 var printNumbers = function printNumbers(from, to, elementRef, interval) {
+  var sufix = arguments.length > 4 && arguments[4] !== undefined ? arguments[4] : '';
   var current = from;
 
   var inCrement = function inCrement() {
-    elementRef.textContent = current;
+    elementRef.textContent = current + sufix;
 
     if (current === to) {
       return;
@@ -159,7 +160,75 @@ var printNumbers = function printNumbers(from, to, elementRef, interval) {
 
 printNumbers(0, maxNumberCafe, countCafeRef, 150);
 printNumbers(0, maxNumberFood, countFoodRef, 100);
-/* ----------------------------------- */
+/* ----------------IntersectionObserver for Number counts------------------- */
+
+var statStatItemArray = document.querySelectorAll('[data-stat-item]');
+var options = {
+  // rootMargin: "-100px",
+  threshold: [0.5]
+};
+
+var statCallback = function statCallback(entries, observer) {
+  entries.forEach(function (entry) {
+    if (entry.isIntersecting) {
+      var maxNumber = Number.parseInt(entry.target.textContent);
+      var sufix;
+
+      if (entry.target.textContent.includes('kg')) {
+        sufix = 'kg';
+      }
+
+      var from = maxNumber - 50;
+
+      if (from < 0) {
+        from = 0;
+      }
+
+      ;
+      printNumbers(from, maxNumber, entry.target, 30, sufix);
+      observer.unobserve(entry.target);
+    }
+  });
+};
+
+var intersecOb = new IntersectionObserver(statCallback, options);
+statStatItemArray.forEach(function (item) {
+  return intersecOb.observe(item);
+});
+/* -------------------для кнопок стрілок в секції продукти--------------- */
+
+var prodListRef = document.querySelector('.product_list');
+var btnArrowArray = prodListRef.querySelectorAll('.button-arrow');
+
+var btnArrowCallback = function btnArrowCallback(entries, observer) {
+  entries.forEach(function (entry) {
+    if (entry.isIntersecting) {
+      entry.target.style.transform = 'translateX(-50%)';
+      observer.unobserve(entry.target);
+    }
+  });
+};
+
+var ioBtnArrow = new IntersectionObserver(btnArrowCallback, options);
+btnArrowArray.forEach(function (item) {
+  return ioBtnArrow.observe(item);
+});
+/* -------------------для картинки галереї--------------- */
+
+var imgGalleryRef = document.querySelector('[data-gallery]');
+console.log(imgGalleryRef);
+
+var imgGalleryCallback = function imgGalleryCallback(entries, observer) {
+  entries.forEach(function (entry) {
+    if (entry.isIntersecting) {
+      entry.target.style.transform = 'scale(1)';
+      observer.unobserve(entry.target);
+    }
+  });
+};
+
+var ioImgGallery = new IntersectionObserver(imgGalleryCallback, options);
+ioImgGallery.observe(imgGalleryRef);
 },{}],"../node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
@@ -188,7 +257,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "65507" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "56336" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

@@ -1075,23 +1075,22 @@ body.mobile-menu-open .menu-button__icon .icon-open {
   padding-bottom: 120px;
 }
 .section_product .title {
-  margin-bottom: 147px;
-}
-@media screen and (min-width: 768px) {
-  .section_product .title {
-    margin-bottom: 158px;
-  }
-}
-@media screen and (min-width: 1200px) {
-  .section_product .title {
-    margin-bottom: 269px;
-  }
+  margin-bottom: 60px;
 }
 
+.product_list {
+  padding-top: 85px;
+}
 @media screen and (min-width: 768px) {
   .product_list {
     display: flex;
     justify-content: space-between;
+    padding-top: 110px;
+  }
+}
+@media screen and (min-width: 1200px) {
+  .product_list {
+    padding-top: 210px;
   }
 }
 
@@ -1311,7 +1310,7 @@ body.mobile-menu-open .menu-button__icon .icon-open {
   position: absolute;
   bottom: 41px;
   left: 50%;
-  transform: translateX(-50%);
+  transform: translateX(-150%);
 }
 .section_product .button-arrow:hover, .section_product .button-arrow:focus {
   transform: translateX(-50%) scale(1.1);
@@ -1726,41 +1725,18 @@ body.mobile-menu-open .menu-button__icon .icon-open {
 .tradition__button:focus {
   background-color: #ecebeb;
 } /* для моей кнопки*/
-.gallery-picture {
-  background-image: url(/gallery2x@mob1x.fee9d289.png);
-  height: 122px;
+.gallery-image {
+  transform: translateX(-150%);
+  transform: scale(0);
   margin-bottom: 80px;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: contain;
-}
-@media screen and (min-device-pixel-ratio: 2), screen and (min-resolution: 192dpi), screen and (min-resolution: 2dppx) {
-  .gallery-picture {
-    background-image: url(/gallery2x@mob2x.aebcbb89.png);
-  }
+  transition-property: transform;
+  transition-delay: 0ms;
+  transition-duration: 1000ms;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
 @media screen and (min-width: 768px) {
-  .gallery-picture {
-    background-image: url(/gallery2x@tablet1x.09e42bfa.png);
-    margin-bottom: 121px;
-    height: 264px;
-  }
-}
-@media screen and (min-width: 768px) and (min-device-pixel-ratio: 2), screen and (min-width: 768px) and (min-resolution: 192dpi), screen and (min-width: 768px) and (min-resolution: 2dppx) {
-  .gallery-picture {
-    background-image: url(/gallery2x@tablet2x.319112b7.png);
-  }
-}
-@media screen and (min-width: 1200px) {
-  .gallery-picture {
-    background-image: url(/gallery1xdesktop.4afd9951.png);
-    margin-bottom: 123px;
-    height: 430px;
-  }
-}
-@media screen and (min-width: 1200px) and (min-device-pixel-ratio: 2), screen and (min-width: 1200px) and (min-resolution: 192dpi), screen and (min-width: 1200px) and (min-resolution: 2dppx) {
-  .gallery-picture {
-    background-image: url(/gallery2xdesktop.1df83d31.png);
+  .gallery-image {
+    margin-bottom: 120px;
   }
 }
 
@@ -1771,12 +1747,12 @@ body.mobile-menu-open .menu-button__icon .icon-open {
 }
 @media screen and (min-width: 768px) {
   .section.gallery {
-    background-image: linear-gradient(#fff5f6 12%, #ffffff 0%);
+    background-image: linear-gradient(#fff5f6 15%, #ffffff 0%);
   }
 }
 @media screen and (min-width: 1200px) {
   .section.gallery {
-    background-image: linear-gradient(#fff5f6 17%, #ffffff 0%);
+    background-image: linear-gradient(#fff5f6 19%, #ffffff 0%);
   }
 }
 
