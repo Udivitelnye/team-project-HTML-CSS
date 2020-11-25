@@ -86,7 +86,6 @@ btnArrowArray.forEach(item => ioBtnArrow.observe(item));
 
 /* -------------------для картинки галереї--------------- */
 const imgGalleryRef = document.querySelector('[data-gallery]');
-console.log(imgGalleryRef);
 
 const imgGalleryCallback = (entries, observer) => {
   entries.forEach(entry => {
