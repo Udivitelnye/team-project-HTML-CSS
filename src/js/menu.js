@@ -65,7 +65,6 @@ const blockMenuOpenClose = () => {
 
 
 const resizeWindow = () => {
-   console.log('resize');
     if (window.innerWidth >= 1200 && bodyRef.classList.contains("mobile-menu-open")) {
     bodyRef.classList.toggle("mobile-menu-open");
     bodyRef.classList.toggle("mobile-menu-close");

@@ -2,7 +2,7 @@
   <div class="modal" tabindex="0" data-modal>
     <h2 class="section-title">Leave your details, we will call you back</h2>
 
-    <button class="modal__close-btn" data-modal-close>
+    <button class="modal__close-btn" aria-label="close button" data-modal-close>
       <svg class="menu-button__icon" width="14" height="14">
         <use href="./img/sprite.svg#icon-close"></use>
       </svg>
@@ -72,14 +72,19 @@
           tabindex="-1"
           data-checkbox-input
         />
-        <svg class="checkbox-icon" tabindex="0" data-checkbox-icon>
-          <use href="./img/sprite.svg#modal-checkbox-icon" />
-        </svg>
-        <span class="form__text-checkbox"
-          >I agree to the newsletter and accept
-          <a class="checkbox__text-link" href="javascript: void(0)"
-            >the Terms and Conditions</a
-          >
+        <span data-checkbox-icon>
+          <svg class="checkbox-icon" tabindex="0">
+            <use href="./img/sprite.svg#modal-checkbox-icon" />
+          </svg>
+        </span>
+        <span class="form__text-checkbox">
+          I agree to the newsletter and accept
+          <a class="checkbox__text-link" href=""
+          target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Terms and Conditions link">
+            the Terms and Conditions
+          </a>
         </span>
       </span>
 

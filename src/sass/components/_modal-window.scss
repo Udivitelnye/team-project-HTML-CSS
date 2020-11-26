@@ -146,6 +146,7 @@
   align-items: flex-start;
   justify-content: center;
   margin-bottom: 10px;
+  cursor: pointer;
 
   @include media-size(min-desktop) {
     align-items: center;

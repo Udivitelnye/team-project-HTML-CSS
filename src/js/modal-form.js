@@ -41,7 +41,7 @@
   }
 
 /* CHECKBOX-icon in modal add attribute CHECKED */
-  const checkboxIconRef = document.querySelector('[data-checkbox-icon]');
+  const checkboxIconRef = document.querySelector('[data-checkbox-icon] svg');
   const checkboxInputRef = document.querySelector('[data-checkbox-input]');
   const checkboxLabelRef = document.querySelector('[data-checkbox-label]');
 

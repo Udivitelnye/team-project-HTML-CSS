@@ -46,7 +46,7 @@ const statStatItemArray = document.querySelectorAll('[data-stat-item]');
 
 const options = {
   // rootMargin: "-100px",
-  threshold: [0.5],
+  threshold: [0.25],
 };
 
 const statCallback = (entries, observer) => {
@@ -83,18 +83,3 @@ const btnArrowCallback = (entries, observer) => {
 
 const ioBtnArrow = new IntersectionObserver(btnArrowCallback, options);
 btnArrowArray.forEach(item => ioBtnArrow.observe(item));
-
-/* -------------------для картинки галереї--------------- */
-const imgGalleryRef = document.querySelector('[data-gallery]');
-
-const imgGalleryCallback = (entries, observer) => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      entry.target.style.transform = 'scale(1)';
-      observer.unobserve(entry.target);
-    }
-  });
-};
-
-const ioImgGallery = new IntersectionObserver(imgGalleryCallback, options);
-ioImgGallery.observe(imgGalleryRef);
