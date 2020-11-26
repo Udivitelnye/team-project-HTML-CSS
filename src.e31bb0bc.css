@@ -436,6 +436,7 @@ h6 {
   align-items: flex-start;
   justify-content: center;
   margin-bottom: 10px;
+  cursor: pointer;
 }
 @media screen and (min-width: 1200px) {
   .form-checkbox {
@@ -1947,20 +1948,20 @@ li.slick-active button {
   cursor: pointer;
 }
 
-.card-contackt {
+.card-contact {
   padding-bottom: 113px;
   font-family: "DM Sans", sans-serif;
   text-align: center;
   background-image: linear-gradient(#ffffff 6%, #fff5f6 6%);
 }
 @media screen and (min-width: 768px) {
-  .card-contackt {
+  .card-contact {
     padding-bottom: 158px;
     background-image: linear-gradient(#ffffff 9%, #fff5f6 9%);
   }
 }
 @media screen and (min-width: 1200px) {
-  .card-contackt {
+  .card-contact {
     padding-bottom: 165px;
     background-image: linear-gradient(#ffffff 12%, #fff5f6 12%);
   }
@@ -2134,23 +2135,23 @@ li.slick-active button {
   }
 }
 
-.contackt__list {
+.contact__list {
   text-align: left;
 }
 
-.contackt__link {
+.contact__link {
   font-size: 12px;
   font-style: normal;
   color: #907e82;
 }
 @media screen and (min-width: 768px) {
-  .contackt__link {
+  .contact__link {
     font-size: 14px;
     line-height: 1.6;
   }
 }
 @media screen and (min-width: 1200px) {
-  .contackt__link {
+  .contact__link {
     font-size: 16px;
     line-height: 1.8;
   }

@@ -117,101 +117,216 @@ parcelRequire = (function (modules, cache, entry, globalName) {
   }
 
   return newRequire;
-})({"js/btn-animation.js":[function(require,module,exports) {
-var animateButton = function animateButton(e) {
-  e.preventDefault; //reset animation
-
-  e.target.classList.remove('animate');
-  e.target.classList.add('animate');
-  setTimeout(function () {
-    e.target.classList.remove('animate');
-  }, 700);
+})({"js/modal-form.js":[function(require,module,exports) {
+/* --------MODAL window open/close------------- */
+var refs = {
+  openModalBtn: document.querySelector("[data-modal-open]"),
+  closeModalBtn: document.querySelector("[data-modal-close]"),
+  backdrop: document.querySelector("[data-backdrop]")
 };
 
-var bubblyButtons = document.getElementsByClassName("bubbly-button");
-
-for (var i = 0; i < bubblyButtons.length; i++) {
-  bubblyButtons[i].addEventListener('click', animateButton, false);
+if (refs.openModalBtn) {
+  refs.openModalBtn.addEventListener("click", toggleModal);
+  refs.closeModalBtn.addEventListener("click", toggleModal);
+  refs.backdrop.addEventListener('click', onBackdropClick);
 }
-/* ---------------count script-------------------- */
+
+;
+
+function onBackdropClick(event) {
+  if (event.target === event.currentTarget) {
+    toggleModal();
+  }
+
+  ;
+}
+
+;
+
+function toggleModal() {
+  !refs.backdrop.classList.contains("is-open") ? window.addEventListener('keydown', onPressEscape) : window.removeEventListener('keydown', onPressEscape);
+  refs.backdrop.classList.toggle("is-open");
+}
+
+;
+
+function onPressEscape(event) {
+  if (event.code === 'Escape') {
+    toggleModal();
+  }
+
+  ;
+}
+
+;
+/* add focus on modal */
+
+var modalRef = document.querySelector('[data-modal]');
+refs.openModalBtn.addEventListener('click', modalFocus);
+
+function modalFocus() {
+  modalRef.focus();
+  modalRef.style.outline = 'none';
+}
+/* CHECKBOX-icon in modal add attribute CHECKED */
 
 
-var countCafeRef = document.querySelector('[data-count-cafe]');
-var countFoodRef = document.querySelector('[data-count-food]');
-var maxNumberCafe = Number(countCafeRef.textContent);
-var maxNumberFood = Number(countFoodRef.textContent);
+var checkboxIconRef = document.querySelector('[data-checkbox-icon] svg');
+var checkboxInputRef = document.querySelector('[data-checkbox-input]');
+var checkboxLabelRef = document.querySelector('[data-checkbox-label]');
+checkboxLabelRef.addEventListener('click', byClickChecked);
+checkboxIconRef.addEventListener('focus', addEventListenerAddChecked());
 
-var printNumbers = function printNumbers(from, to, elementRef, interval) {
-  var sufix = arguments.length > 4 && arguments[4] !== undefined ? arguments[4] : '';
-  var current = from;
+function addEventListenerAddChecked() {
+  window.addEventListener('keydown', onPressEnterAdd);
+}
 
-  var inCrement = function inCrement() {
-    elementRef.textContent = current + sufix;
+;
 
-    if (current === to) {
-      return;
+function onPressEnterAdd(event) {
+  if (event.target.classList.contains('checkbox-icon') && event.code === 'Enter') {
+    checkboxInputRef.setAttribute('checked', '');
+    checkboxIconRef.classList.add('checked');
+    window.removeEventListener('keydown', onPressEnterAdd);
+    window.addEventListener('keydown', onPressEnterRemove);
+  }
+}
+
+;
+
+function onPressEnterRemove(event) {
+  if (event.target.classList.contains('checkbox-icon') && event.code === 'Enter') {
+    checkboxInputRef.removeAttribute('checked');
+    checkboxIconRef.classList.remove('checked');
+    window.removeEventListener('keydown', onPressEnterRemove);
+    addEventListenerAddChecked();
+  }
+}
+
+;
+
+function byClickChecked(event) {
+  if (event.target.classList.contains('form__text-checkbox') || event.target.classList.contains('checkbox-icon')) {
+    if (checkboxInputRef.hasAttribute('checked')) {
+      checkboxInputRef.removeAttribute('checked');
+      checkboxIconRef.classList.remove('checked');
+      addEventListenerAddChecked();
+    } else {
+      checkboxInputRef.setAttribute('checked', '');
+      checkboxIconRef.classList.add('checked');
+      window.addEventListener('keydown', onPressEnterRemove);
     }
 
-    current += 1;
-  };
+    ;
+  }
 
-  setInterval(inCrement, interval);
-};
+  ;
+}
 
-printNumbers(0, maxNumberCafe, countCafeRef, 150);
-printNumbers(0, maxNumberFood, countFoodRef, 100);
-/* ----------------IntersectionObserver for Number counts------------------- */
+;
+/* ========================================= */
 
-var statStatItemArray = document.querySelectorAll('[data-stat-item]');
-var options = {
-  // rootMargin: "-100px",
-  threshold: [0.25]
-};
+/* --------FORM in modal window------------- */
 
-var statCallback = function statCallback(entries, observer) {
-  entries.forEach(function (entry) {
-    if (entry.isIntersecting) {
-      var maxNumber = Number.parseInt(entry.target.textContent);
-      var sufix;
+var formModalRef = document.querySelector('[data-form-modal]');
 
-      if (entry.target.textContent.includes('kg')) {
-        sufix = 'kg';
-      }
+var takeFormData = function takeFormData(event) {
+  event.preventDefault(); //забороняє браузеру відправляти форму при натисканні кнопки
+  // console.dir(event.target.elements); //так можна отримати доступ до елементів форми
 
-      var from = maxNumber - 50;
+  var formRef = event.target; // тут міститься посилання на форму
 
-      if (from < 0) {
-        from = 0;
+  /* -------------- */
+
+  var formInputArray = formRef.querySelectorAll('input');
+  var checked = true;
+  formInputArray.forEach(function (input) {
+    if (!input.hasAttribute('checked')) {
+      input.style.borderColor = '#d41443';
+
+      if (input.getAttribute('type') === 'checkbox') {
+        var _checkboxIconRef = formRef.querySelector('.checkbox-icon');
+
+        _checkboxIconRef.classList.add('border-not-checked');
       }
 
       ;
-      printNumbers(from, maxNumber, entry.target, 30, sufix);
-      observer.unobserve(entry.target);
+      checked = false;
     }
   });
-};
 
-var intersecOb = new IntersectionObserver(statCallback, options);
-statStatItemArray.forEach(function (item) {
-  return intersecOb.observe(item);
-});
-/* -------------------для кнопок стрілок в секції продукти--------------- */
+  if (!checked) {
+    console.log('not all inputs checked');
+    return;
+  }
 
-var prodListRef = document.querySelector('.product_list');
-var btnArrowArray = prodListRef.querySelectorAll('.button-arrow');
+  ;
+  /* -------------- */
 
-var btnArrowCallback = function btnArrowCallback(entries, observer) {
-  entries.forEach(function (entry) {
-    if (entry.isIntersecting) {
-      entry.target.style.transform = 'translateX(-50%)';
-      observer.unobserve(entry.target);
-    }
+  var formData = new FormData(formRef); //створюємо новий об'єкт
+
+  var submittedData = {}; //об'єкт для збору даних з форми, який надішлеться на бекенд
+
+  formData.forEach(function (value, key) {
+    //цей об'єкт просто має ф-цію форіч і дані інпутів у вигляді value та key = name інпута
+    submittedData[key] = value; //записуємо дані в об'єкт
   });
+  console.dir(submittedData); //показує в консолі обєкт з даними
+
+  toggleModal(); // закриває форму
+
+  formInputArray.forEach(function (input) {
+    input.value = '';
+    input.removeAttribute('checked');
+  });
+  /* --------видаляю все з чекбокса----------- */
+
+  checkboxIconRef.classList.remove('border-not-checked');
+  checkboxInputRef.removeAttribute('checked');
+  checkboxIconRef.classList.remove('checked');
+  window.removeEventListener('keydown', onPressEnterRemove);
+  addEventListenerAddChecked();
+  /* --------кінець видаляю все з чекбокса----------- */
 };
 
-var ioBtnArrow = new IntersectionObserver(btnArrowCallback, options);
-btnArrowArray.forEach(function (item) {
-  return ioBtnArrow.observe(item);
+if (formModalRef) {
+  formModalRef.addEventListener('submit', takeFormData);
+}
+
+;
+/* --------------------- */
+
+/* ---------перевірка заповнення INPUT в модалці------------ */
+
+var modalInputArray = document.querySelectorAll('[data-form-modal] input');
+
+var checkedInput = function checkedInput(event) {
+  var pattern;
+
+  if (event.target.name === "name") {
+    pattern = /^[a-zA-ZА-Яа-яЁё\s]+$/;
+  }
+
+  if (event.target.name === "tel") {
+    pattern = /^[0-9]{9,12}(\s*)?$/;
+  }
+
+  if (event.target.name === "email") {
+    pattern = /^([a-z0-9_\.-])+@[a-z0-9-]+\.([a-z]{2,4}\.)?[a-z]{2,4}$/;
+  }
+
+  if (!pattern.test(event.target.value)) {
+    event.target.style.outlineColor = '#d41443';
+    event.target.removeAttribute('checked');
+  } else {
+    event.target.style.outlineColor = 'inherit';
+    event.target.style.borderColor = 'rgba(33, 33, 33, 0.2)';
+    event.target.setAttribute('checked', '');
+  }
+};
+
+modalInputArray.forEach(function (input) {
+  return input.addEventListener('input', _.debounce(checkedInput, 500));
 });
 },{}],"../node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
@@ -417,5 +532,5 @@ function hmrAcceptRun(bundle, id) {
     return true;
   }
 }
-},{}]},{},["../node_modules/parcel-bundler/src/builtins/hmr-runtime.js","js/btn-animation.js"], null)
-//# sourceMappingURL=/btn-animation.0a970e60.js.map
+},{}]},{},["../node_modules/parcel-bundler/src/builtins/hmr-runtime.js","js/modal-form.js"], null)
+//# sourceMappingURL=/modal-form.40274c32.js.map

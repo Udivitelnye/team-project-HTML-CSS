@@ -117,101 +117,142 @@ parcelRequire = (function (modules, cache, entry, globalName) {
   }
 
   return newRequire;
-})({"js/btn-animation.js":[function(require,module,exports) {
-var animateButton = function animateButton(e) {
-  e.preventDefault; //reset animation
+})({"js/menu.js":[function(require,module,exports) {
+/* --------mobile MENU------------- */
+var menuBtnRef = document.querySelector("[data-menu-button]");
+var menuBlockRef = document.querySelector("[data-menu-block]");
+var headerContainerRef = document.querySelector('[data-header-container]');
+var windowHeight = window.innerHeight;
+var bodyRef = document.querySelector("body");
+bodyRef.classList.add('mobile-menu-close');
 
-  e.target.classList.remove('animate');
-  e.target.classList.add('animate');
-  setTimeout(function () {
-    e.target.classList.remove('animate');
-  }, 700);
-};
+var blockMenuOpenClose = function blockMenuOpenClose() {
+  var _menuBlockRef$getBoun = menuBlockRef.getBoundingClientRect(),
+      menuBlockHeight = _menuBlockRef$getBoun.height;
 
-var bubblyButtons = document.getElementsByClassName("bubbly-button");
+  var _headerContainerRef$g = headerContainerRef.getBoundingClientRect(),
+      headerContainerHeight = _headerContainerRef$g.height;
 
-for (var i = 0; i < bubblyButtons.length; i++) {
-  bubblyButtons[i].addEventListener('click', animateButton, false);
-}
-/* ---------------count script-------------------- */
+  if (menuBlockHeight === windowHeight) {
+    headerContainerRef.removeAttribute('style');
+    menuBlockRef.removeAttribute('style');
+  } else {
+    menuBlockRef.style.height = "".concat(windowHeight, "px");
+    menuBlockRef.style.paddingTop = "60px";
+    headerContainerRef.style.height = "".concat(headerContainerHeight, "px");
+  }
 
+  var expanded = menuBtnRef.getAttribute("aria-expanded") === "true" || false;
+  menuBtnRef.setAttribute("aria-expanded", !expanded);
+  bodyRef.classList.toggle("mobile-menu-open");
+  bodyRef.classList.toggle("mobile-menu-close");
+  /* ----------------------------додаю бекдроп для блоку меню---------------------------- */
 
-var countCafeRef = document.querySelector('[data-count-cafe]');
-var countFoodRef = document.querySelector('[data-count-food]');
-var maxNumberCafe = Number(countCafeRef.textContent);
-var maxNumberFood = Number(countFoodRef.textContent);
+  var menuBlockParentRef = menuBlockRef.parentNode;
 
-var printNumbers = function printNumbers(from, to, elementRef, interval) {
-  var sufix = arguments.length > 4 && arguments[4] !== undefined ? arguments[4] : '';
-  var current = from;
+  if (menuBlockParentRef.classList.contains('container')) {
+    var wrapperRef = document.createElement("div");
+    wrapperRef.classList.add('wrapper');
+    wrapperRef.appendChild(menuBlockRef);
+    menuBlockParentRef.appendChild(wrapperRef);
+    setTimeout(function () {
+      return wrapperRef.classList.add('animate');
+    }, 250);
+    /* -----вішаю на обгортку умови закриття по кліку та натисканням ескейп---- */
 
-  var inCrement = function inCrement() {
-    elementRef.textContent = current + sufix;
+    wrapperRef.addEventListener('click', onWrapperClick);
 
-    if (current === to) {
-      return;
-    }
-
-    current += 1;
-  };
-
-  setInterval(inCrement, interval);
-};
-
-printNumbers(0, maxNumberCafe, countCafeRef, 150);
-printNumbers(0, maxNumberFood, countFoodRef, 100);
-/* ----------------IntersectionObserver for Number counts------------------- */
-
-var statStatItemArray = document.querySelectorAll('[data-stat-item]');
-var options = {
-  // rootMargin: "-100px",
-  threshold: [0.25]
-};
-
-var statCallback = function statCallback(entries, observer) {
-  entries.forEach(function (entry) {
-    if (entry.isIntersecting) {
-      var maxNumber = Number.parseInt(entry.target.textContent);
-      var sufix;
-
-      if (entry.target.textContent.includes('kg')) {
-        sufix = 'kg';
-      }
-
-      var from = maxNumber - 50;
-
-      if (from < 0) {
-        from = 0;
+    function onWrapperClick(event) {
+      if (event.target === event.currentTarget) {
+        toggleWrapper();
       }
 
       ;
-      printNumbers(from, maxNumber, entry.target, 30, sufix);
-      observer.unobserve(entry.target);
     }
+
+    ;
+
+    function toggleWrapper() {
+      bodyRef.classList.toggle("mobile-menu-open");
+      bodyRef.classList.toggle("mobile-menu-close");
+      headerContainerRef.removeAttribute('style');
+      menuBlockRef.removeAttribute('style');
+      menuBlockParentRef.appendChild(menuBlockRef);
+      var wrapperRef = document.querySelector('.wrapper');
+      wrapperRef.remove();
+    }
+
+    ;
+  } else {
+    /* ----видаляю бекдроп для блоку меню---- */
+    var _wrapperRef = document.querySelector('.wrapper');
+
+    var menuBlockGrandPaRef = menuBlockParentRef.parentNode;
+    menuBlockGrandPaRef.appendChild(menuBlockRef);
+
+    _wrapperRef.remove();
+  }
+  /* ------------------кінець коду по бекдропу меню------------------------------ */
+
+};
+
+var resizeWindow = function resizeWindow() {
+  if (window.innerWidth >= 1200 && bodyRef.classList.contains("mobile-menu-open")) {
+    bodyRef.classList.toggle("mobile-menu-open");
+    bodyRef.classList.toggle("mobile-menu-close");
+    menuBlockRef.removeAttribute('style');
+    headerContainerRef.removeAttribute('style');
+    /* видаляю обгортку для меню блок, якщо вона є */
+
+    var menuBlockParentRef = menuBlockRef.parentNode;
+
+    if (menuBlockParentRef.classList.contains('wrapper')) {
+      var menuBlockGrandPaRef = menuBlockParentRef.parentNode;
+      menuBlockGrandPaRef.appendChild(menuBlockRef);
+      menuBlockParentRef.remove();
+    }
+    /* ------------------кінець коду по обгортці меню------------ */
+
+  }
+};
+
+menuBtnRef.addEventListener("click", blockMenuOpenClose);
+window.addEventListener('resize', _.throttle(resizeWindow, 500));
+/* ------вішаю на лінки в меню умову закриття меню на мобілці------- */
+
+var menuLinkArray = document.querySelectorAll("[data-menu-block] .link");
+
+var blockMenuCloseByLink = function blockMenuCloseByLink() {
+  if (window.innerWidth < 768 && bodyRef.classList.contains("mobile-menu-open")) {
+    blockMenuOpenClose();
+  }
+};
+
+var AddEvListToLink = function AddEvListToLink(listOfLinks) {
+  listOfLinks.forEach(function (link) {
+    return link.addEventListener("click", blockMenuCloseByLink);
   });
 };
 
-var intersecOb = new IntersectionObserver(statCallback, options);
-statStatItemArray.forEach(function (item) {
-  return intersecOb.observe(item);
-});
-/* -------------------для кнопок стрілок в секції продукти--------------- */
+AddEvListToLink(menuLinkArray);
+/* =========================================== */
 
-var prodListRef = document.querySelector('.product_list');
-var btnArrowArray = prodListRef.querySelectorAll('.button-arrow');
+/* -----------плавний скролінг------------- */
 
-var btnArrowCallback = function btnArrowCallback(entries, observer) {
-  entries.forEach(function (entry) {
-    if (entry.isIntersecting) {
-      entry.target.style.transform = 'translateX(-50%)';
-      observer.unobserve(entry.target);
-    }
+var anchorsArray = document.querySelectorAll('a[href*="#"]');
+
+var rewindTo = function rewindTo(event) {
+  event.preventDefault();
+  var nameID = event.target.getAttribute('href');
+  var nameIDRef = document.querySelector(nameID);
+  nameIDRef.scrollIntoView({
+    behavior: 'smooth',
+    block: 'start'
   });
 };
 
-var ioBtnArrow = new IntersectionObserver(btnArrowCallback, options);
-btnArrowArray.forEach(function (item) {
-  return ioBtnArrow.observe(item);
+anchorsArray.forEach(function (anchor) {
+  anchor.addEventListener('click', rewindTo);
 });
 },{}],"../node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
@@ -417,5 +458,5 @@ function hmrAcceptRun(bundle, id) {
     return true;
   }
 }
-},{}]},{},["../node_modules/parcel-bundler/src/builtins/hmr-runtime.js","js/btn-animation.js"], null)
-//# sourceMappingURL=/btn-animation.0a970e60.js.map
+},{}]},{},["../node_modules/parcel-bundler/src/builtins/hmr-runtime.js","js/menu.js"], null)
+//# sourceMappingURL=/menu.0c91648c.js.map

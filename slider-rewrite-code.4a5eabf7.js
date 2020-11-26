@@ -117,101 +117,12 @@ parcelRequire = (function (modules, cache, entry, globalName) {
   }
 
   return newRequire;
-})({"js/btn-animation.js":[function(require,module,exports) {
-var animateButton = function animateButton(e) {
-  e.preventDefault; //reset animation
-
-  e.target.classList.remove('animate');
-  e.target.classList.add('animate');
-  setTimeout(function () {
-    e.target.classList.remove('animate');
-  }, 700);
-};
-
-var bubblyButtons = document.getElementsByClassName("bubbly-button");
-
-for (var i = 0; i < bubblyButtons.length; i++) {
-  bubblyButtons[i].addEventListener('click', animateButton, false);
-}
-/* ---------------count script-------------------- */
-
-
-var countCafeRef = document.querySelector('[data-count-cafe]');
-var countFoodRef = document.querySelector('[data-count-food]');
-var maxNumberCafe = Number(countCafeRef.textContent);
-var maxNumberFood = Number(countFoodRef.textContent);
-
-var printNumbers = function printNumbers(from, to, elementRef, interval) {
-  var sufix = arguments.length > 4 && arguments[4] !== undefined ? arguments[4] : '';
-  var current = from;
-
-  var inCrement = function inCrement() {
-    elementRef.textContent = current + sufix;
-
-    if (current === to) {
-      return;
-    }
-
-    current += 1;
-  };
-
-  setInterval(inCrement, interval);
-};
-
-printNumbers(0, maxNumberCafe, countCafeRef, 150);
-printNumbers(0, maxNumberFood, countFoodRef, 100);
-/* ----------------IntersectionObserver for Number counts------------------- */
-
-var statStatItemArray = document.querySelectorAll('[data-stat-item]');
-var options = {
-  // rootMargin: "-100px",
-  threshold: [0.25]
-};
-
-var statCallback = function statCallback(entries, observer) {
-  entries.forEach(function (entry) {
-    if (entry.isIntersecting) {
-      var maxNumber = Number.parseInt(entry.target.textContent);
-      var sufix;
-
-      if (entry.target.textContent.includes('kg')) {
-        sufix = 'kg';
-      }
-
-      var from = maxNumber - 50;
-
-      if (from < 0) {
-        from = 0;
-      }
-
-      ;
-      printNumbers(from, maxNumber, entry.target, 30, sufix);
-      observer.unobserve(entry.target);
-    }
+})({"js/slider-rewrite-code.js":[function(require,module,exports) {
+$(document).ready(function () {
+  $('.single-item').slick({
+    dots: true,
+    arrows: false
   });
-};
-
-var intersecOb = new IntersectionObserver(statCallback, options);
-statStatItemArray.forEach(function (item) {
-  return intersecOb.observe(item);
-});
-/* -------------------для кнопок стрілок в секції продукти--------------- */
-
-var prodListRef = document.querySelector('.product_list');
-var btnArrowArray = prodListRef.querySelectorAll('.button-arrow');
-
-var btnArrowCallback = function btnArrowCallback(entries, observer) {
-  entries.forEach(function (entry) {
-    if (entry.isIntersecting) {
-      entry.target.style.transform = 'translateX(-50%)';
-      observer.unobserve(entry.target);
-    }
-  });
-};
-
-var ioBtnArrow = new IntersectionObserver(btnArrowCallback, options);
-btnArrowArray.forEach(function (item) {
-  return ioBtnArrow.observe(item);
 });
 },{}],"../node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
@@ -417,5 +328,5 @@ function hmrAcceptRun(bundle, id) {
     return true;
   }
 }
-},{}]},{},["../node_modules/parcel-bundler/src/builtins/hmr-runtime.js","js/btn-animation.js"], null)
-//# sourceMappingURL=/btn-animation.0a970e60.js.map
+},{}]},{},["../node_modules/parcel-bundler/src/builtins/hmr-runtime.js","js/slider-rewrite-code.js"], null)
+//# sourceMappingURL=/slider-rewrite-code.4a5eabf7.js.map

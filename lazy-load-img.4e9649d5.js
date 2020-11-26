@@ -117,102 +117,57 @@ parcelRequire = (function (modules, cache, entry, globalName) {
   }
 
   return newRequire;
-})({"js/btn-animation.js":[function(require,module,exports) {
-var animateButton = function animateButton(e) {
-  e.preventDefault; //reset animation
+})({"js/lazy-load-img.js":[function(require,module,exports) {
+// const imgArray = document.querySelectorAll('img[data-lazy]');
+// const options = {
+//   rootMargin: "100px",
+// //   threshold: [0.5],
+// };
+// const imgLazyLoadCallback = (entries, observer) => {
+//   entries.forEach(entry => {
+//       if (entry.isIntersecting) {
+//           console.log(`sdf`);
+//           const image = entry.target;
+//           const src = image.dataset.lazy;
+//           image.src = src;
+//           image.removeAttribute('data-lazy');
+//           const tagPictureRef = image.parentNode;
+//           const arraySourceTags = tagPictureRef.querySelectorAll('source');
+//           arraySourceTags.forEach(source => {
+//               source.srcset = source.dataset.lazy;
+//               source.removeAttribute('data-lazy');
+//           });
+//         if (image.hasAttribute('data-gallery')) {
+//             image.style.transform = 'scale(1)';
+//         }
+//       observer.unobserve(image);
+//     }
+//   });
+// };
+// const ioImgLazyLoad = new IntersectionObserver(imgLazyLoadCallback, options);
+// imgArray.forEach(img => ioImgLazyLoad.observe(img));
 
-  e.target.classList.remove('animate');
-  e.target.classList.add('animate');
-  setTimeout(function () {
-    e.target.classList.remove('animate');
-  }, 700);
-};
+/* ------------------------------------------ */
 
-var bubblyButtons = document.getElementsByClassName("bubbly-button");
-
-for (var i = 0; i < bubblyButtons.length; i++) {
-  bubblyButtons[i].addEventListener('click', animateButton, false);
-}
-/* ---------------count script-------------------- */
-
-
-var countCafeRef = document.querySelector('[data-count-cafe]');
-var countFoodRef = document.querySelector('[data-count-food]');
-var maxNumberCafe = Number(countCafeRef.textContent);
-var maxNumberFood = Number(countFoodRef.textContent);
-
-var printNumbers = function printNumbers(from, to, elementRef, interval) {
-  var sufix = arguments.length > 4 && arguments[4] !== undefined ? arguments[4] : '';
-  var current = from;
-
-  var inCrement = function inCrement() {
-    elementRef.textContent = current + sufix;
-
-    if (current === to) {
-      return;
-    }
-
-    current += 1;
-  };
-
-  setInterval(inCrement, interval);
-};
-
-printNumbers(0, maxNumberCafe, countCafeRef, 150);
-printNumbers(0, maxNumberFood, countFoodRef, 100);
-/* ----------------IntersectionObserver for Number counts------------------- */
-
-var statStatItemArray = document.querySelectorAll('[data-stat-item]');
+/* -------------------вспливання для картинки галереї--------------- */
+var imgGalleryRef = document.querySelector('[data-gallery]');
 var options = {
-  // rootMargin: "-100px",
-  threshold: [0.25]
+  rootMargin: "0px" //   threshold: [0.5],
+
 };
 
-var statCallback = function statCallback(entries, observer) {
+var imgGalleryCallback = function imgGalleryCallback(entries, observer) {
   entries.forEach(function (entry) {
     if (entry.isIntersecting) {
-      var maxNumber = Number.parseInt(entry.target.textContent);
-      var sufix;
-
-      if (entry.target.textContent.includes('kg')) {
-        sufix = 'kg';
-      }
-
-      var from = maxNumber - 50;
-
-      if (from < 0) {
-        from = 0;
-      }
-
-      ;
-      printNumbers(from, maxNumber, entry.target, 30, sufix);
+      var image = entry.target;
+      image.style.transform = 'scale(1)';
       observer.unobserve(entry.target);
     }
   });
 };
 
-var intersecOb = new IntersectionObserver(statCallback, options);
-statStatItemArray.forEach(function (item) {
-  return intersecOb.observe(item);
-});
-/* -------------------для кнопок стрілок в секції продукти--------------- */
-
-var prodListRef = document.querySelector('.product_list');
-var btnArrowArray = prodListRef.querySelectorAll('.button-arrow');
-
-var btnArrowCallback = function btnArrowCallback(entries, observer) {
-  entries.forEach(function (entry) {
-    if (entry.isIntersecting) {
-      entry.target.style.transform = 'translateX(-50%)';
-      observer.unobserve(entry.target);
-    }
-  });
-};
-
-var ioBtnArrow = new IntersectionObserver(btnArrowCallback, options);
-btnArrowArray.forEach(function (item) {
-  return ioBtnArrow.observe(item);
-});
+var ioImgGallery = new IntersectionObserver(imgGalleryCallback, options);
+ioImgGallery.observe(imgGalleryRef);
 },{}],"../node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
@@ -417,5 +372,5 @@ function hmrAcceptRun(bundle, id) {
     return true;
   }
 }
-},{}]},{},["../node_modules/parcel-bundler/src/builtins/hmr-runtime.js","js/btn-animation.js"], null)
-//# sourceMappingURL=/btn-animation.0a970e60.js.map
+},{}]},{},["../node_modules/parcel-bundler/src/builtins/hmr-runtime.js","js/lazy-load-img.js"], null)
+//# sourceMappingURL=/lazy-load-img.4e9649d5.js.map
