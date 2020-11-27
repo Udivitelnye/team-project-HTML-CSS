@@ -46,8 +46,9 @@
   const checkboxLabelRef = document.querySelector('[data-checkbox-label]');
 
 
-  checkboxLabelRef.addEventListener('click', byClickChecked);
   checkboxIconRef.addEventListener('focus', addEventListenerAddChecked());
+  checkboxLabelRef.addEventListener('click', (event) => event.preventDefault());
+  checkboxLabelRef.addEventListener('click', byClickChecked);
 
   function addEventListenerAddChecked() {
     window.addEventListener('keydown', onPressEnterAdd);
@@ -169,3 +170,10 @@ const checkedInput = (event) => {
 };
 
 modalInputArray.forEach(input => input.addEventListener('input', _.debounce(checkedInput, 500)));
+
+/* ----------------------------- */
+// const labelRef = document.querySelector('label');
+// labelRef.addEventListener('click', (e) => {
+//   e.preventDefault();
+//   console.log(e.preventDefault());
+// });
